@@ -9,6 +9,8 @@ public class AppMain {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(HelloWorldConfig.class);
         HelloWorld bean = (HelloWorld) context.getBean("helloWorldBean");
         bean.sayHello("Spring 4 - Java");
+        bean = (HelloWorld) context.getBean("helloWorld2");
+        bean.sayHello("Spring 4 - Java - 2");
         context.close();
     }
  

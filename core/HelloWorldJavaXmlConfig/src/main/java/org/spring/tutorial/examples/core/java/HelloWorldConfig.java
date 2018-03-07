@@ -12,5 +12,9 @@ public class HelloWorldConfig {
     public HelloWorld helloWorld() {
         return new HelloWorldImpl();
     }
- 
+
+    @Bean//bean name = method name
+    public HelloWorld helloWorld2() {
+        return new HelloWorldImpl();
+    }
 }
