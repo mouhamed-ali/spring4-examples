@@ -11,6 +11,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>entity-manager-config</module>
+        <module>in-memory-datasource</module>
     </modules>
 
     <artifactId>jpa</artifactId>
