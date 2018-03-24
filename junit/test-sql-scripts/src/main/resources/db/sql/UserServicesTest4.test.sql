@@ -1,0 +1,1 @@
+INSERT INTO users VALUES (99, 'last', 'last@gmail.com');
