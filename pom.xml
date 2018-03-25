@@ -11,6 +11,7 @@
         <module>core</module>
         <module>junit</module>
         <module>jpa</module>
+        <module>rest</module>
     </modules>
     <packaging>pom</packaging>
 
