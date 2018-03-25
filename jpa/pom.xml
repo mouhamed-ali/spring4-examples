@@ -12,6 +12,7 @@
     <modules>
         <module>entity-manager-config</module>
         <module>in-memory-datasource</module>
+        <module>transaction-manager-example</module>
     </modules>
 
     <artifactId>jpa</artifactId>
