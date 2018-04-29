@@ -1,4 +1,4 @@
-package org.spring.tutorial.examples.rest.template.user.api;
+package org.spring.tutorial.examples.rest.template.api.user;
 
 import org.spring.tutorial.examples.rest.template.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;

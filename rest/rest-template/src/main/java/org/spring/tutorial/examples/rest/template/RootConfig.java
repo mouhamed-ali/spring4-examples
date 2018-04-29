@@ -1,8 +1,6 @@
 package org.spring.tutorial.examples.rest.template;
 
-import org.spring.tutorial.examples.rest.template.user.api.UserRestApiConsumer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.spring.tutorial.examples.rest.template.api.user.UserRestApiConsumer;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration

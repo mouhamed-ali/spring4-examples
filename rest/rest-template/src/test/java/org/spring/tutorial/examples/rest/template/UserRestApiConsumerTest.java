@@ -2,8 +2,8 @@ package org.spring.tutorial.examples.rest.template;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.spring.tutorial.examples.rest.template.api.user.UserRestApiConsumer;
 import org.spring.tutorial.examples.rest.template.domain.User;
-import org.spring.tutorial.examples.rest.template.user.api.UserRestApiConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.ContextConfiguration;
