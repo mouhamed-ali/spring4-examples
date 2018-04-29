@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+    <display-name>SpringServiceSample</display-name>
+
+    <servlet>
+        <servlet-name>rest</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!-- First dispatcher -->
+    <servlet-mapping>
+        <servlet-name>rest</servlet-name>
+        <url-pattern>/hello/*</url-pattern>
+    </servlet-mapping>
+    <!--
+       <url-pattern>/*</url-pattern> : all the requests will be intercepted by the dispatcherServlet
+       <servlet-name>rest</servlet-name> : the servlet dispatcher will initialize the configuration from the file rest-servlet.xml
+    -->
+
+    <!-- second dispatcher servlet : for users -->
+    <servlet>
+        <servlet-name>user</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user</servlet-name>
+        <url-pattern>/users/*</url-pattern>
+    </servlet-mapping>
+</web-app>
