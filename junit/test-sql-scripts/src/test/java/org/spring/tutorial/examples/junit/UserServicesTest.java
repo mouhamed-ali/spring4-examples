@@ -1,5 +1,6 @@
 package org.spring.tutorial.examples.junit;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.junit.dao.UserDaoImpl;
@@ -21,8 +22,10 @@ public class UserServicesTest {
 
 	@Autowired
 	UserDaoImpl dao;
-	
+
+    //its not the best way to make unit tests (we must use asserts). but its just an example to show our app data
 	@Test
+    @Ignore
 	public void test(){
 		System.out.println("----------  Test 1 ----------");
 		User user = dao.getUserById(1);

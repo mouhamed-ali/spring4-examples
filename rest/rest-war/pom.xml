@@ -18,20 +18,27 @@
     </modules>
 
     <dependencies>
+        <!--
+            If you goal is to inherit particular dependencies to all child poms, without a need to declare them in
+            each of the children - then yes, you should declare them within <dependencies> and not
+            <dependencyManagement>.
+            On the other hand, a dependency declared within <dependencyManagement> can be used only when you need it
+            in a child pom - you just write its group and artifact inside that child's <dependencies>.
+        -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${springframework.version}</version>
         </dependency>
         <dependency>
+            <!-- inherited from the rest project -->
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
+            <version>${javax.servlet.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

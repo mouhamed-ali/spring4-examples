@@ -62,8 +62,7 @@ public class RestApiController {
             return new ResponseEntity(HttpStatus.NO_CONTENT);    //204
             // You many decide to return HttpStatus.NOT_FOUND	//404
         }
-//        return new ResponseEntity<List<User>>(users,HttpStatus.OK);
-        return new ResponseEntity<>(users, HttpStatus.OK);//with java 8 you can ignore the type of the implementation (same as the interface by default)
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     // -------------------Retrieve Single User------------------------------------------

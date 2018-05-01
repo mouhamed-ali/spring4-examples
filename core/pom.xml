@@ -18,5 +18,17 @@
         <module>profiles</module>
     </modules>
 
+    <dependencies>
+        <!-- inherited from the spring4-examples project, wil be inherited from child projects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <!-- inherited from the spring4-examples project, wil be inherited from child projects -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
