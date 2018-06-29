@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  contextPath: /SpringBootStandAloneExample
+  
+#If you had preferred .properties file, application.properties corresponding to above .yml would be
+#server.port: 8080
+#server.contextPath: /SpringBootStandAloneExample
+#for more properties check : http://docs.spring.io/autorepo/docs/spring-boot/current/reference/htmlsingle/#using-boot-using-springbootapplication-annotation

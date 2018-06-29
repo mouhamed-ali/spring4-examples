@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" href="../../css/bootstrap.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h2 th:text="${title}"></h2>
+        <p th:text="${message}"></p>
+    </div>
+</div>
+<p>
+    Let s add a view to our MVC app. We would be using Freemarker templates in our app.
+    Spring Boot WebMvcAutoConfiguration adds FreeMarkerViewResolver with id freeMarkerViewResolver if freemarker jar is
+    in classpath,
+    which is the case since we are using spring-boot-starter-freemarker.
+    It looks for resources in a loader path (externalized to spring.freemarker.templateLoaderPath, default
+    classpath:/templates/)
+    by surrounding the view name with a prefix and suffix (externalized to spring.freemarker.prefix and
+    spring.freemarker.suffix, with empty and .ftl defaults respectively).
+    It can be overridden by providing a bean of the same name.
+    if you want to use jsp files instead of freemaker you must add jstl and servlet dependencies in the pom.xml then you
+    must work with jsp files (tagslib, static resources ...)
+</p>
+<hr/>
+<p>
+    Static resources like images/css/JS in a Spring boot application are commonly located in a directory called
+    /static (or /public or /resources or /META-INF/resources) in the classpath or from the root of the ServletContext.
+    In this example, we are using bootstrap.css which is located in src/main/resources/static/css.
+</p>
+<img src="images/hello-world.jpg" align="right"/>
+</body>
+</html>

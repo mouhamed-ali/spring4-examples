@@ -12,6 +12,7 @@
         <module>junit</module>
         <module>jpa</module>
         <module>rest</module>
+        <module>mvc</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -25,6 +26,7 @@
         <jaxb-api.version>2.2.11</jaxb-api.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <spring.data.jpa.version>1.11.6.RELEASE</spring.data.jpa.version>
+        <springframework.boot.version>1.4.3.RELEASE</springframework.boot.version>
     </properties>
 
     <dependencyManagement>

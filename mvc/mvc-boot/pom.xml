@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mvc</artifactId>
+        <groupId>org.spring.tutorial</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mvc-boot</artifactId>
+    <packaging>jar</packaging>
+    <!--
+        we are using spring boot 1.4.3.RELEASE mvc dependencies. you can check the spring boot 1.4.3 pom to get the dependencies
+        versions via this url.
+        http://repo.spring.io/milestone/org/springframework/boot/spring-boot-dependencies/1.4.3.RELEASE/spring-boot-dependencies-1.4.3.RELEASE.pom
+    -->
+
+    <dependencies>
+        <!-- spring mvc dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${springframework.boot.version}</version>
+        </dependency>
+
+        <!-- using Freemarker templates for views -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>${springframework.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- Include if you want to make an executable jar[FAT JAR which
+                includes all dependencies along with sprinboot loader] that you can run on
+                commandline using java -jar NAME -->
+                <!-- If you are not including it, result would be just a regular jar.
+                You could run the project using mvn spring-boot:run [on project root directory]-->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springframework.boot.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
