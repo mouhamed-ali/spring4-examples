@@ -6,7 +6,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "org.spring.tutorial.examples.rest.war.web.controllers")
+@ComponentScan(basePackages = {"org.spring.tutorial.examples.rest.war.web.controllers"
+        , "org.spring.tutorial.examples.rest.war.dao"})
 public class AppConfig {
 
     /*

@@ -29,6 +29,7 @@ class UserController {
     @ResponseStatus(HttpStatus.OK)// return 200
     public User findOne(@PathVariable("id") Long id) {
 
+        //TODO : http://localhost:8080/rest-war-xml-config/users will be catching by this method
         return service.findUserById(id);
     }
 

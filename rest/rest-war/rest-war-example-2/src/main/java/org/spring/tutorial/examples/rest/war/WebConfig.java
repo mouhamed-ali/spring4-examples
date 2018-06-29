@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
     when using a more complex configuration it is advisable to remove the annotation
     and expand the WebMvcConfigurationSupport class
  */
-@ComponentScan("org.spring..tutorial.rest.war.controller")
+@ComponentScan("org.spring.tutorial.examples.rest.war.controller")
 public class WebConfig {
 
 }

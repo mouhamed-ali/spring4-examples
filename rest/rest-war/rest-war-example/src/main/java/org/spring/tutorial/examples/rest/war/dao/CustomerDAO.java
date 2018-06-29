@@ -38,6 +38,7 @@ public class CustomerDAO {
      */
     public Customer get(Long id) {
 
+        //TODO : change for to use stream java 8
         for (Customer c : customers) {
             if (c.getId().equals(id)) {
                 return c;
@@ -90,10 +91,11 @@ public class CustomerDAO {
 
         for (Customer c : customers) {
             if (c.getId().equals(id)) {
+                // we will not update the id, consider it as a primary key
                 customer.setId(c.getId());
                 customers.remove(c);
                 customers.add(customer);
-                return customer;
+                return this.get(id);
             }
         }
 

@@ -1,0 +1,219 @@
+{
+  "info": {
+    "_postman_id": "ffb66775-467c-453a-977e-f74c2bd8430f",
+    "name": "Test customer API : rest-war-example",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Test Get",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers/101",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers",
+            "101"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Get KO",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers/99",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers",
+            "99"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Get All",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\"id\":99,\n\"firstName\":\"name\",\n\"lastName\":\"lastName\",\n\"email\":\"email\",\n\"mobile\":\"mobile\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers/201",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers",
+            "201"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Delete KO",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers/33",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers",
+            "33"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Put",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\"id\":401,\n\"firstName\":\"name\",\n\"lastName\":\"lastName\",\n\"email\":\"email\",\n\"mobile\":\"mobile\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers/301",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers",
+            "301"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Put KO",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\"id\":401,\n\"firstName\":\"name\",\n\"lastName\":\"lastName\",\n\"email\":\"email\",\n\"mobile\":\"mobile\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/rest-war-example/customers/901",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "rest-war-example",
+            "customers",
+            "901"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

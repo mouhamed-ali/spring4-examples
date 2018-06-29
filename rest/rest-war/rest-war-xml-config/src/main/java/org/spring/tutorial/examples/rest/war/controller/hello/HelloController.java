@@ -19,11 +19,12 @@ class HelloController {
      * then I prefer not to declare it as public.
      */
 
-    @RequestMapping(method = RequestMethod.GET)//use @GetMapping instead of this annotation (same for other annotations)
+    @RequestMapping(path = {"", "/"}, method = RequestMethod.GET)
+//use @GetMapping instead of this annotation (same for other annotations)
     @ResponseBody
     public String sayHello() {//@ResponseBody not necessary to use with spring 4
 
-        return "Hello !!!";
+        return "Hello World !!!";
     }
     /*
      * depends on the data of the request the @ResponseBody allows to select the correct MessageConverter to convert
@@ -33,10 +34,12 @@ class HelloController {
      * but it's a simple case because it is not based on the Accept property only
      */
 
-    @RequestMapping("{name}")
+
+    @RequestMapping(path = "/{name}")
     @ResponseBody
     public String sayHelloUserByName(@PathVariable("name") String name) {
 
+        //TODO : http://localhost:8080/rest-war-xml-config/hello/ will be catching by this method and not the first ?
         return String.format("Hello %s !!!", name);
     }
     /*
@@ -50,7 +53,7 @@ class HelloController {
      * to find the correct data representation
      * 6- the last step can be omitted by directly returning the data in the controller using the annotation
      * @ResponseBody
-     * remarque : using the annotation Spring4 @RestController instead of @Controller we can omit the annotation
+     * note : using the annotation Spring4 @RestController instead of @Controller we can omit the annotation
      * @ResponseBody because it is already used in the @RestController annotation.
      */
 }

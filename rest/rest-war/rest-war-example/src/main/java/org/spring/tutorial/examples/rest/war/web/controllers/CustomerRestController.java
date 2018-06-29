@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/customers")
 public class CustomerRestController {
 
     /*
-     * Now let us create CustomerRestController class. This class is annotated with @RestController annotation.
+     * Now let's create CustomerRestController class. This class is annotated with @RestController annotation.
      * Also note that we are using new annotations @GetMapping, @PostMapping, @PutMapping and @DeleteMapping instead of standard @RequestMapping.
      * These annotations are available since Spring MVC 4.3 and are standard way of defining REST endpoints. They act as wrapper to @RequestMapping.
      * For example @GetMapping is a composed annotation that acts as a shortcut for @RequestMapping(method = RequestMethod.GET).
@@ -23,12 +24,15 @@ public class CustomerRestController {
     private CustomerDAO customerDAO;
 
 
-    @GetMapping("/customers")
+    /*
+        in my case after deploying the war on tomcat the url is : http://localhost:8080/rest-war-example/customers
+     */
+    @GetMapping
     public List getCustomers() {
         return customerDAO.list();
     }
 
-    @GetMapping("/customers/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity getCustomer(@PathVariable("id") Long id) {
 
         Customer customer = customerDAO.get(id);
@@ -39,15 +43,16 @@ public class CustomerRestController {
         return new ResponseEntity(customer, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/customers")
+    @PostMapping
     public ResponseEntity createCustomer(@RequestBody Customer customer) {
 
+        //TODO : the sent id is different from the id of the created customer ?
         customerDAO.create(customer);
 
-        return new ResponseEntity(customer, HttpStatus.OK);
+        return new ResponseEntity(customer, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity deleteCustomer(@PathVariable Long id) {
 
         if (null == customerDAO.delete(id)) {
@@ -58,7 +63,7 @@ public class CustomerRestController {
 
     }
 
-    @PutMapping("/customers/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
 
         customer = customerDAO.update(id, customer);

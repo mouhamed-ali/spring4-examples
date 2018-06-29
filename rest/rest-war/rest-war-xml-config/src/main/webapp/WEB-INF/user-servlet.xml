@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <context:component-scan
-            base-package="org.spring.tutorial.examples.rest.controller.user,org.spring.tutorial.examples.rest.service"/>
+            base-package="org.spring.tutorial.examples.rest.war.controller.user,org.spring.tutorial.examples.rest.war.service"/>
     <!--
         we can also declare the beans and make the injection manually but
         it is a boring work so we will use the annotations we can also declare the package

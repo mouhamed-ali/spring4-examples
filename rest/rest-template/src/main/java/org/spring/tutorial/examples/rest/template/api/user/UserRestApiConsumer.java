@@ -2,6 +2,7 @@ package org.spring.tutorial.examples.rest.template.api.user;
 
 import org.spring.tutorial.examples.rest.template.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,7 +13,7 @@ import java.util.List;
 public class UserRestApiConsumer {
 
     // we gonna use the rest api of the project named rest-war-example-2
-    private static final String USER_URI = "http://localhost:8080/spring-rest-example/users";
+    private static final String USER_URI = "http://localhost:8080/rest-war-example-2/users/";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -21,11 +22,17 @@ public class UserRestApiConsumer {
         this.restTemplate = restTemplate;
     }
 
+    /*
+        GET
+     */
     public User getUserById(Long id) {
 
-        return restTemplate.getForObject(USER_URI + "/{id}", User.class, 3);
+        return restTemplate.getForObject(USER_URI + id, User.class);
     }
 
+    /*
+        POST
+     */
     public HttpStatus createUser(User user) {
 
         /*
@@ -36,6 +43,17 @@ public class UserRestApiConsumer {
         return response.getStatusCode();
     }
 
+    /*
+        POST
+     */
+    public void createUserSecond(User user) {
+
+        restTemplate.postForLocation(USER_URI, user, User.class);
+    }
+
+    /*
+        PUT
+     */
     public HttpStatus updateUser(Long id, User user) {
 
         User requestBody = user;
@@ -55,15 +73,37 @@ public class UserRestApiConsumer {
          */
     }
 
+    /*
+        PUT
+     */
+    public void updateUserSecond(Long id, User user) {
+
+        restTemplate.put(USER_URI + "/{id}", user, id);
+    }
+
+    /*
+        DELETE
+     */
     public HttpStatus deleteUser(Long id) {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<?> request = new HttpEntity<Object>(headers);//send an empty body
-        ResponseEntity<?> response = restTemplate.exchange(USER_URI + "/{id}", HttpMethod.DELETE, request, String.class, id);
+        ResponseEntity<?> response = restTemplate.exchange(USER_URI + "/{id}", HttpMethod.DELETE, null, String.class, id);
         return response.getStatusCode();
     }
 
+    /*
+        DELETE
+     */
+    public void deleteUserSecond(Long id) {
+
+        restTemplate.delete(USER_URI + "/{id}", id);
+    }
+
+    /*
+        GET
+     */
     public List<User> getAllUsers() {
 
         ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(USER_URI, Object[].class);
@@ -93,6 +133,9 @@ public class UserRestApiConsumer {
         //we can also use the method below its the same thing
     }
 
+    /*
+        GET
+     */
     public List<User> findAllUsers() {
 
         List<User> users = new ArrayList<User>();
@@ -101,7 +144,6 @@ public class UserRestApiConsumer {
         String email;
         User user;
 
-        RestTemplate restTemplate = new RestTemplate();
         List<LinkedHashMap<String, Object>> usersMap = restTemplate.getForObject(USER_URI, List.class);
         if (usersMap != null) {
             for (LinkedHashMap<String, Object> map : usersMap) {
@@ -117,5 +159,22 @@ public class UserRestApiConsumer {
             return null;
         }
         return users;
+    }
+
+    /*
+           GET
+    */
+    public List<User> getItInAnEasyWay() {
+
+        ResponseEntity<List<User>> usersResponse = restTemplate.exchange(
+                USER_URI,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<List<User>>() {
+                });
+        if (usersResponse != null && usersResponse.hasBody()) {
+            return usersResponse.getBody();
+        }
+        return null;
     }
 }

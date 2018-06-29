@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/books")
 public class BookController {
 
+    /*
+        http://localhost:8080/rest-war-example-2/books
+     */
     @Autowired
     BookServiceImpl service;
 
@@ -21,6 +24,7 @@ public class BookController {
     @ResponseBody
     public Book findOne(@PathVariable("name") String id) {
 
+        //TODO : add xml support to the Book entity
         return service.findBookById(id);
     }
 
@@ -44,15 +48,17 @@ public class BookController {
          another reason to separate methods. the reason for separation is that we
         want to generate an exception in the case of the xml response
      */
-    @DeleteMapping(path = "/{name}", consumes = "application/json", produces = "application/json")
+    @DeleteMapping(path = "/{name}", produces = "application/json")
     public void delete(@PathVariable("name") String name) {
 
+        //TODO doest not work
         service.deleteBook(name);
     }
 
-    @DeleteMapping(path = "/{name}", consumes = "application/xml", produces = "application/xml")
+    @DeleteMapping(path = "/{name}", produces = "application/xml")
     public void deleteXml(@PathVariable("name") String name) throws BookNotFoundException {
 
+        //TODO doest not work
         if (name.equals("Les miserables")) {
             throw new BookNotFoundException("not found book");
         }

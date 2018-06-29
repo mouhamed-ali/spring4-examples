@@ -14,6 +14,11 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
+    /*
+        you can use apache tomcat to test the app (to run the war in the build directory [target])
+        http://localhost:8080/rest-war-example-2/users
+     */
+
     @Autowired
     UserServiceImpl service;
 
@@ -22,6 +27,9 @@ public class UserController {
     public User findOne(@PathVariable("id") long id) throws AccesDeniedUser {
 
         if (id > 0 && id < 3) {
+            /*
+                request status will be 404 in this case
+             */
             throw new AccesDeniedUser("access denied");
         }
         return service.findUserById(id);
@@ -38,12 +46,14 @@ public class UserController {
     public void delete(@PathVariable("id") Long id) throws UserNotFoundException {
 
         if (id > 0 && id < 3) {
+            //TODO : the response in this case is 500 and not 409 ?
             throw new UserNotFoundException("not found user");
         }
+        //TODO : if there is no exception the response status is 409 and not 200 ?
         service.deleteUser(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)//old school :p
     public List<User> findAll() {
 
         return service.findAll();

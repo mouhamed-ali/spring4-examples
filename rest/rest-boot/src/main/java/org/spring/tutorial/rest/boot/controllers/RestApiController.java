@@ -78,13 +78,12 @@ public class RestApiController {
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
-    // -------------------Create a User-------------------------------------------   
-    @RequestMapping(value = "/user/", method = RequestMethod.POST)
+    // -------------------Create a User-------------------------------------------
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
     public ResponseEntity<?> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
 
         if (userService.isUserExist(user)) {
-            return new ResponseEntity(new CustomErrorType("Unable to create. A User with name " +
-                    user.getLogin() + " already exist."), HttpStatus.CONFLICT);
+            return new ResponseEntity(new CustomErrorType("Creation failed. A User with the same id already exist."), HttpStatus.CONFLICT);
         }
         userService.saveUser(user);
         HttpHeaders headers = new HttpHeaders();
@@ -107,7 +106,7 @@ public class RestApiController {
         User currentUser = userService.findById(id);
 
         if (currentUser == null) {
-            return new ResponseEntity(new CustomErrorType("Unable to upate. User with id " + id + " not found."), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new CustomErrorType("Unable to update. User with id " + id + " not found."), HttpStatus.NOT_FOUND);
         }
         currentUser.setLogin(user.getLogin());
         currentUser.setPassword(user.getPassword());
