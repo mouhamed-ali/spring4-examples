@@ -1,19 +1,23 @@
 package org.spring.tutorial.mvc.domain;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 public class User {
 
     /*
-     * la validation des champs ci dessous sera r�alis� par spring lors de l interception
-     * des parametres depuis l IHM
+     * validation of the fields below will be done by spring during the interception
+     * of the GUI (guest user interface) fields
      */
-    //@NotNull(message = "User ID is required.")
-    //@Min(value = 1000, message = "User ID must be at least 4 digits.")
+    //TODO : spring validation doesn't work
+    @NotNull(message = "User ID is required.")
+    @Min(value = 999, message = "User ID must contains 4 digits at least.")
     private long id;
 
-    //@NotNull(message = "User name is required.")
+    @NotNull(message = "User name is required.")
     private String name;
 
-    //@NotNull(message = "User email is required.")
+    @NotNull(message = "User email is required.")
     private String email;
 
     public User() {
