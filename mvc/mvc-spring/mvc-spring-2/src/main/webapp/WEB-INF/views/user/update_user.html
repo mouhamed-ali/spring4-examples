@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Show User</title>
+</head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Show User</title>
+</head>
+<body>
+<br/>
+<ul>
+    <li><a
+            style="padding: 0 4px; background-color: #333; color: #fff; font-weight: 400;"
+            th:href="@{/user/index}">Home</a></li>
+</ul>
+<hr/>
+<br/>
+<h1>Update User</h1>
+<br/>
+<hr/>
+<form action="#" th:action="@{'/user/' + ${user.id}}" th:method="put"
+      th:object="${user}">
+    <table border="1">
+        <tbody>
+        <tr>
+            <th>User ID</th>
+            <td><input th:placeholder="${user.id}" type="number" th:field="*{id}"
+            /></td>
+        </tr>
+        <tr>
+            <th>User Name</th>
+            <td><input th:placeholder="${user.name}" type="text"
+                       th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <th>User Email</th>
+            <td><input th:placeholder="${user.email}" type="text"
+                       th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input type="submit"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Show Users</title>
+</head>
+<body>
+<br/>
+<ul>
+    <li><a style="padding: 0 4px;
+    background-color: #333;
+    color: #fff;
+    font-weight: 400;" th:href="@{/user/index}">Home</a></li>
+</ul>
+<hr/>
+<br/>
+<h1>Show Users</h1>
+<br/>
+<hr/>
+<div th:if="${not #lists.isEmpty(users)}">
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>View</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"><a th:href="@{'/user/' + product.id}"></a></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td><a th:href="@{'/user/' + ${user.id}}">!</a></td>
+            <td>
+                <form action="#" th:action="@{'/user/{id}'(id=${user.id})}" th:method="DELETE" method="delete">
+                    <button type="submit" id="submitButton">X</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+<div th:if="${ #lists.isEmpty(users)}">There's is no users to show</div>
+</body>
+</html>
