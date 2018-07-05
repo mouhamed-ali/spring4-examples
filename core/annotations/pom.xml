@@ -12,6 +12,8 @@
     <artifactId>annotations</artifactId>
 
     <dependencies>
+        <!-- this dependency will be used only in this module that's why i will add the
+        dependency version -->
         <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>

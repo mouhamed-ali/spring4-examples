@@ -18,7 +18,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${springframework.boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -31,7 +30,6 @@
                 <!-- Build an executable JAR -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${springframework.boot.version}</version>
                 <executions>
                     <execution>
                         <goals>

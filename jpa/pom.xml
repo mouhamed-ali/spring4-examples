@@ -50,27 +50,21 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-jpa</artifactId>
-                <version>${spring.data.jpa.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-entitymanager</artifactId>
-                <version>${hibernate.version}</version>
-                <scope>runtime</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-core</artifactId>
-                <version>${hibernate.version}</version>
+                <!-- import the pom parent dependency management section -->
+                <groupId>org.spring.tutorial</groupId>
+                <artifactId>examples</artifactId>
+                <version>${project.parent.version}</version>
+                <scope>import</scope>
+                <!--
+                    This scope is only used when dependency is of type pom. This scope indicates that the specified POM
+                     should be replaced with the dependencies in that POM's <dependencyManagement> section.
+                -->
             </dependency>
         </dependencies>
     </dependencyManagement>
