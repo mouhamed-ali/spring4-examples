@@ -13,6 +13,7 @@
         <module>jpa</module>
         <module>rest</module>
         <module>mvc</module>
+        <module>security</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -35,6 +36,8 @@
         <persitence.api.version>1.0.2</persitence.api.version>
         <maven.war.plugin.version>3.1.0</maven.war.plugin.version>
         <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
+        <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
+        <!-- Spring and Spring Security are on different release schedules -->
     </properties>
 
     <dependencyManagement>
@@ -155,6 +158,24 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${springframework.boot.version}</version>
+            </dependency>
+            <!-- Security dependencies -->
+            <!-- This dependency contains filters and related web security infrastructure enabling URL access control in a Servlet environment. -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${org.springframework.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${org.springframework.security.version}</version>
+            </dependency>
+            <!-- mandatory to use spring gui taglibs-->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${org.springframework.security.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
