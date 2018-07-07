@@ -16,6 +16,7 @@
         <module>custom-login-page</module>
         <module>jdbc-authentication</module>
         <module>jdbc-authentication-2</module>
+        <module>custom-filter-chain</module>
     </modules>
 
     <dependencies>
