@@ -14,6 +14,7 @@
     <modules>
         <module>http-basic</module>
         <module>custom-login-page</module>
+        <module>jdbc-authentication</module>
     </modules>
 
     <dependencies>
@@ -52,6 +53,22 @@
             <artifactId>jstl</artifactId>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- import the pom parent dependency management section -->
+                <groupId>org.spring.tutorial</groupId>
+                <artifactId>examples</artifactId>
+                <version>${project.parent.version}</version>
+                <scope>import</scope>
+                <!--
+                    This scope is only used when dependency is of type pom. This scope indicates that the specified POM
+                     should be replaced with the dependencies in that POM's <dependencyManagement> section.
+                -->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <pluginManagement>
