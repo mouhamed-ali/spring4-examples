@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>http-basic</module>
+        <module>custom-login-page</module>
     </modules>
 
     <dependencies>
