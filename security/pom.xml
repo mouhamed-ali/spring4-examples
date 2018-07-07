@@ -15,6 +15,7 @@
         <module>http-basic</module>
         <module>custom-login-page</module>
         <module>jdbc-authentication</module>
+        <module>jdbc-authentication-2</module>
     </modules>
 
     <dependencies>

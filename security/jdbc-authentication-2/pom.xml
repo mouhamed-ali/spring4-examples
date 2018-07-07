@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jdbc-authentication</artifactId>
+    <artifactId>jdbc-authentication-2</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
@@ -42,4 +42,6 @@
             <artifactId>persistence-api</artifactId>
         </dependency>
     </dependencies>
+
+
 </project>
