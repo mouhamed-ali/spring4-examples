@@ -10,7 +10,7 @@ public class BookRepositoryImpl implements BookRepository {
     public Book getByIsbn(String isbn) {
         //in a real project, this method will retrieve data from a database
         simulateSlowService();
-        return new Book(isbn, "Some book");
+        return new Book().setIsbn(isbn).setTitle("Some book");
     }
 
     // Don't do this at home
