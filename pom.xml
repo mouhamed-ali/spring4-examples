@@ -15,6 +15,7 @@
         <module>mvc</module>
         <module>security</module>
         <module>jdbc</module>
+        <module>caching</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -154,14 +155,15 @@
                 <artifactId>validation-api</artifactId>
                 <version>1.1.0.Final</version>
             </dependency>
-            <!-- spring boot -->
+            <!-- spring boot as dependency-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
                 <version>${springframework.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!-- Security dependencies -->
-            <!-- This dependency contains filters and related web security infrastructure enabling URL access control in a Servlet environment. -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
@@ -172,7 +174,6 @@
                 <artifactId>spring-security-config</artifactId>
                 <version>${org.springframework.security.version}</version>
             </dependency>
-            <!-- mandatory to use spring gui taglibs-->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-taglibs</artifactId>
