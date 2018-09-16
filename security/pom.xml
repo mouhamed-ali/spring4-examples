@@ -25,6 +25,7 @@
             <artifactId>spring-core</artifactId>
         </dependency>
         <!-- Security dependencies -->
+        <!-- This dependency contains filters and related web security infrastructure enabling URL access control in a Servlet environment. -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
@@ -33,6 +34,7 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
         </dependency>
+        <!-- mandatory to use spring gui taglibs-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
