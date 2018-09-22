@@ -16,6 +16,7 @@
         <module>security</module>
         <module>jdbc</module>
         <module>caching</module>
+        <module>soap</module>
     </modules>
     <packaging>pom</packaging>
 
