@@ -1,19 +1,15 @@
 package org.spring.tutorial.examples.core;
 
-import javax.sql.DataSource;
-
 import org.spring.tutorial.examples.core.wrapper.PropertiesWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
+import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(
@@ -24,6 +20,9 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 )
 @ComponentScan(basePackages={"org.spring.tutorial.examples.core.dao"})
 @Profile("dev")
+/*
+ * we can use !dev it means that this config is used when the used profile is different from dev (prod, qualif ...)
+ */
 public class DevConfig {
 
 	@Autowired
