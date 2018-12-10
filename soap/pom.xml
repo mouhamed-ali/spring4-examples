@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>producer</module>
-        <module>soap-entities</module>
         <module>consumer</module>
     </modules>
 

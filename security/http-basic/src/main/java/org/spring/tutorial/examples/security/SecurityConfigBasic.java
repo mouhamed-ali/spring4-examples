@@ -5,10 +5,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.Arrays;
 
 
 @Configuration
@@ -54,9 +57,9 @@ public class SecurityConfigBasic extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
 
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("user").password("password").roles("USER").build());
-        manager.createUser(User.withUsername("admin").password("admin").roles("ADMIN").build());
+        User firstUser = new User("user", "password", Arrays.asList(new SimpleGrantedAuthority("USER")));
+        User secondUser = new User("admin", "admin", Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager(Arrays.asList(firstUser, secondUser));
         return manager;
         /*
          * UserDetailsService is a DAO interface for loading data that is specific to a user account. It has no other
