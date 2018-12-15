@@ -7,21 +7,25 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ConfigClass {
-	
-	@Value("#{systemProperties['java.version']}")
+
+    @Value("#{systemProperties['java.version']}")//jvm property
 	String javaVersion;
-	
-	@Value("#{someBean.someValue}")
+
+    @Value("${JAVA_HOME}")// environment variable
+            String javaHome;
+
+    @Value("#{someBean.someValue}")//spring bean attribute
 	/*
 	 * get a loaded bean field value
 	 */
-    private Integer someBeanValue;
+            Integer someBeanValue;
 
 	@Bean
 	public PropertiesWrapper propertiesWrapper() {
 
 		PropertiesWrapper propertiesWrapper = new PropertiesWrapper();
 		propertiesWrapper.setProperty(javaVersion);
+        propertiesWrapper.setProperty(javaHome);
 		propertiesWrapper.setProperty(String.valueOf(someBeanValue));
 		return propertiesWrapper;
 	}
