@@ -11,24 +11,14 @@
 
     <artifactId>core</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>HelloWorldJavaXmlConfig</module>
         <module>properties-injection</module>
         <module>annotations</module>
         <module>profiles</module>
+        <module>properties-boot</module>
     </modules>
 
-    <dependencies>
-        <!-- inherited from the spring4-examples project, wil be inherited from child projects -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <!-- inherited from the spring4-examples project, wil be inherited from child projects -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-    </dependencies>
-
+    <!-- we can use dependencies of the parent pom in the child modules -->
 </project>
