@@ -1,5 +1,6 @@
 package org.spring.tutorial.examples.rest.template;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.rest.template.api.user.UserRestApiConsumer;
@@ -22,6 +23,7 @@ public class UserRestApiConsumerTest {
     private UserRestApiConsumer userRest;
 
     @Test
+    @Ignore // TODO use mocks or create a json collection of services
     public void testUserApi() {
 
         System.out.println("------------------------------------------------------ getUserById  --------------------------------------------------------------");
