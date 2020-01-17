@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application implements CommandLineRunner { //this interface is used to run a specific piece of code after application start
 
     private static Logger LOGGER = LoggerFactory.getLogger(Application.class);
+
     @Autowired
     private MailConfig mailConfig;
 
@@ -25,9 +26,9 @@ public class Application implements CommandLineRunner { //this interface is used
         LOGGER.info("#####");
         LOGGER.info("{}", mailConfig);
         mailConfig.getDefaultRecipients().forEach(s -> LOGGER.info("{}", s));
-        mailConfig.getAdditionalHeaders().forEach((key, value) ->
-                LOGGER.info("key : {} , value : {}", key, value));
+        mailConfig.getAdditionalHeaders().forEach((key, value) -> LOGGER.info("key : {} , value : {}", key, value));
         LOGGER.info("{}", mailConfig.getCredentials());
+        mailConfig.getMyList().forEach(s -> LOGGER.info("{}", s));
         LOGGER.info("#####");
     }
 }

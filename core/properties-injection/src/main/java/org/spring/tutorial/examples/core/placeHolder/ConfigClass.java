@@ -33,15 +33,16 @@ public class ConfigClass {
 	@Bean
 	public PropertiesWrapper propertiesWrapper() {
 
-		PropertiesWrapper propertiesWrapper = new PropertiesWrapper();
-		/*
-		 * at first time spring will load the db.user property from "database_configuration.properties". but
-		 * this last property will be overwritten by the value from the "test_database_configuration.properties"
-		 * same thing for the db.password property
-		 */
-		propertiesWrapper.setProperty(environment.getProperty("db.user"));
-		propertiesWrapper.setProperty(environment.getProperty("db.password"));
-		propertiesWrapper.setProperty(environment.getProperty("db.driver"));
-		return propertiesWrapper;
-	}
+        PropertiesWrapper propertiesWrapper = new PropertiesWrapper();
+        /*
+         * at first time spring will load the db.user property from "database_configuration.properties". but
+         * this last property will be overwritten by the value from the "test_database_configuration.properties"
+         * same thing for the db.password property
+         */
+        propertiesWrapper.setProperty(environment.getProperty("db.user"));
+        propertiesWrapper.setProperty(environment.getProperty("db.password"));
+        propertiesWrapper.setProperty(environment.getProperty("db.driver"));
+        propertiesWrapper.setProperty(environment.getProperty("HOMEPATH"));
+        return propertiesWrapper;
+    }
 }

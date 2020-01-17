@@ -22,6 +22,8 @@ public class MailConfig {
     private Integer port;
     @Value("${mail.from}")//map the value if the attribute does not match
     private String fromSender;
+    @Value("#{'${my.list.of.strings}'.split(',')}")
+    private List<String> myList;
 
     /*
      * list
@@ -90,6 +92,14 @@ public class MailConfig {
     public MailConfig setCredentials(Credentials credentials) {
         this.credentials = credentials;
         return this;
+    }
+
+    public List<String> getMyList() {
+        return myList;
+    }
+
+    public void setMyList(List<String> myList) {
+        this.myList = myList;
     }
 
     @Override

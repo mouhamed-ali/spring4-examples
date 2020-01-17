@@ -8,8 +8,8 @@ public class PropertiesWrapper {
 	private List<String> properties;
 	
 	public PropertiesWrapper() {
-		
-		properties = new ArrayList<String>();
+
+		properties = new ArrayList<>();
 	}
 	
 	public void setProperty(String prop){
@@ -17,13 +17,8 @@ public class PropertiesWrapper {
 		properties.add(prop);
 	}
 	
-	public void showProperties(){
+	public void showProperties() {
 
-		System.out.println();
-		for(String prop : properties){
-			System.out.print(" > "+prop+" , ");
-		}
-		System.out.println();
-		System.out.println();
+		properties.forEach(prop -> System.out.println("> " + prop));
 	}
 }

@@ -1,88 +1,76 @@
-# Project Title
+# Spring 4 examples
 
-One Paragraph of project description goes here
+This repository contains simple examples for the different Spring framework modules to showcase the API and how to use it.
 
-## Getting Started
+We have separate folders for each module :
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+```
+spring4-examples
+│
+└─── caching
+└─── core
+└─── jdbc
+└─── jpa
+└─── junit
+└─── mvc
+└─── rest
+└─── security
+└─── soap
+```
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+To create your development environment, you will need to :
 
-```
-Give examples
-```
+- install java 8 (or above)
+- install maven
+- install git to clone the project
+- you favorite IDE (i'm using intellij) 
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+To clone the project, run this command :
 
 ```
-Give the example
+    $ git clone https://github.com/amdouni-mohamed-ali/spring4-examples.git
+    $ cd spring4-examples
 ```
 
-And repeat
+And run this to make that the project compiles :
 
 ```
-until finished
+    $ mvn clean package
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+If everything turns out alright, you should end up with this result :
+
+![Selection_190](https://user-images.githubusercontent.com/16627692/72629898-7ec20480-3951-11ea-8cd5-e1274dd00934.png)
+
+`Please Note` : If you want to upgrade the version of one of the dependencies, make sure to check this link :
+
+- https://docs.spring.io/platform/docs/Brussels-SR4/reference/html/appendix-dependency-versions.html
+
+It shows the versions compatibility. It's gonna be use easy to migrate versions using it. Otherwise, you can use the spring bom project to manage the dependencies versions. 
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+We are using a travis job to run tests before merging branches. Each tme we create a merge request, travis will download our code on a docker image and run the tests after.
 
-### Break down into end to end tests
+You can check the travis and the docker files to know more.
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
+For unit tests, you gonna find them in each module + some explanations in the source code also.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* Java - openjdk version "1.8.0_232"
+* [Maven](https://maven.apache.org/) - Dependency Management (version 3.6.0)
+* [Intellij](https://www.jetbrains.com/) - IDE (version 11.0.5)
+* [Travis](http://travis-ci.org/)
+* [Docker](https://www.docker.com/)
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Amdouni Mohamed Ali** [[github](https://github.com/amdouni-mohamed-ali)]
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
-
+![Spring_framework-1](https://user-images.githubusercontent.com/16627692/72637378-7671c580-3961-11ea-8d00-3f5624480783.png)
