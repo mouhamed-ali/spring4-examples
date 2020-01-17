@@ -67,4 +67,5 @@ Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
 ```
 
 Intellij report :
+
 ![core-profiles-test](https://user-images.githubusercontent.com/16627692/72648182-b3968180-397a-11ea-9aae-8acc2dde0f50.png)

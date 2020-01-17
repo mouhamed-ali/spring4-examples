@@ -29,7 +29,7 @@ mail.credentials.authMethod=SHA1
 my.list.of.strings=ABC,CDE,EFG
 ```
 
-into java objects [String, List, Map and Object] using 
+into java objects [String, List, Map and Object]
 
 ### Running the application
 
