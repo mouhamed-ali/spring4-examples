@@ -1,7 +1,5 @@
 package org.spring.tutorial.examples.core;
 
-import javax.sql.DataSource;
-
 import org.spring.tutorial.examples.core.wrapper.PropertiesWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +11,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
+import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(
@@ -30,11 +30,11 @@ public class DefaultConfig {
 	@Bean
 	public PropertiesWrapper propertiesWrapper() {
 
-		PropertiesWrapper propertiesWrapper = new PropertiesWrapper(); 
-		propertiesWrapper.setProperty(environment.getProperty("db.host"));
-		propertiesWrapper.setProperty(environment.getProperty("db.name"));
-		propertiesWrapper.setProperty(environment.getProperty("db.user"));
-		propertiesWrapper.setProperty(environment.getProperty("db.password"));
+		PropertiesWrapper propertiesWrapper = new PropertiesWrapper();
+		propertiesWrapper.setProperty("db.host", environment.getProperty("db.host"));
+		propertiesWrapper.setProperty("db.name", environment.getProperty("db.name"));
+		propertiesWrapper.setProperty("db.user", environment.getProperty("db.user"));
+		propertiesWrapper.setProperty("db.password", environment.getProperty("db.password"));
 		return propertiesWrapper;
 	}
 	
@@ -50,10 +50,10 @@ public class DefaultConfig {
 			.build();
 		return db;
 	}
-	
+
 	@Bean
-	public JdbcTemplate getJdbcTemplate() {
-		return new JdbcTemplate(dataSource());
+	public JdbcTemplate getJdbcTemplate(DataSource dataSource) {
+		return new JdbcTemplate(dataSource);
 	}
 	
 }
