@@ -19,12 +19,12 @@ public class ConfigClass {
 			@Value("${db.password}") String dbPassword
 			) {
 
-		PropertiesWrapper propertiesWrapper = new PropertiesWrapper(); 
-		propertiesWrapper.setProperty(javaVersion);
-		propertiesWrapper.setProperty(computerName);
-		propertiesWrapper.setProperty(homePath);
-		propertiesWrapper.setProperty(dbUser);
-		propertiesWrapper.setProperty(dbPassword);
+		PropertiesWrapper propertiesWrapper = new PropertiesWrapper();
+		propertiesWrapper.setProperty("javaVersion : " + javaVersion);
+		propertiesWrapper.setProperty("computerName : " + computerName);
+		propertiesWrapper.setProperty("homePath : " + homePath);
+		propertiesWrapper.setProperty("dbUser : " + dbUser);
+		propertiesWrapper.setProperty("dbPassword : " + dbPassword);
 		return propertiesWrapper;
 	}
 }

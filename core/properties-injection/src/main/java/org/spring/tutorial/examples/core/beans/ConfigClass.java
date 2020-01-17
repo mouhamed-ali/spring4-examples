@@ -12,13 +12,13 @@ public class ConfigClass {
 	String javaVersion;
 
     @Value("${JAVA_HOME}")// environment variable
-            String javaHome;
+			String javaHome;
 
-    @Value("#{someBean.someValue}")//spring bean attribute
-	/*
-	 * get a loaded bean field value
-	 */
-            Integer someBeanValue;
+	@Value("#{someBean.someValue}")//spring bean attribute
+			/*
+			 * get a loaded bean field value
+			 */
+			Integer someBeanValue;
 
 	@Bean
 	public PropertiesWrapper propertiesWrapper() {

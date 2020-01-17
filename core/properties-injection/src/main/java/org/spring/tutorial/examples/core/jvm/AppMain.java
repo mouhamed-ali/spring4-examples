@@ -21,6 +21,7 @@ public class AppMain {
         
         /*
          * spring checks : property files then system properties then the jvm properties.
+         * spring will replace the file property with the system property if the two matches
          */
     }
  
