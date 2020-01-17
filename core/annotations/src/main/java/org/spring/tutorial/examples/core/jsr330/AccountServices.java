@@ -12,10 +12,9 @@ import javax.inject.Named;
 public class AccountServices {
 
 	@Inject
-	AccountRepository accountRepository;
+	AccountRepository jpaAccountRepository;
 	
 	/*
-	 * exception : expected single matching bean but found 2: jdbcAccountRepository,jpaAccountRepository
 	 * we have two beans of type AccountRepository
 	 * to use jdbcAccountRepository try this :
 	 * @Inject
@@ -25,12 +24,8 @@ public class AccountServices {
 	 * AccountRepository jpaAccountRepository;
 	 */
 	
-	public long returnHowMuchDoIHave(){
-		
-		return accountRepository.getContent();
-	}
-	
-	public AccountServices() {
-		
+	public long returnHowMuchDoIHave() {
+
+		return jpaAccountRepository.getContent();
 	}
 }
