@@ -21,25 +21,28 @@
     <packaging>pom</packaging>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <springframework.version>4.3.9.RELEASE</springframework.version>
+        <springframework.version>4.3.10.RELEASE</springframework.version>
         <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
+        <!-- Spring and Spring Security are on different release schedules -->
         <spring.data.jpa.version>1.11.6.RELEASE</spring.data.jpa.version>
-        <hibernate.version>4.3.10.Final</hibernate.version>
+        <spring.data.jpa.commons.version>1.13.6.RELEASE</spring.data.jpa.commons.version>
+        <hibernate.version>5.0.12.Final</hibernate.version>
         <jaxb-api.version>2.2.11</jaxb-api.version>
         <persitence.api.version>1.0.2</persitence.api.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <servlet.api.version>3.1.0</servlet.api.version>
-        <servlet.jsp.api.version>2.3.1</servlet.jsp.api.version>
+        <servlet.jsp.api.version>2.3.2-b02</servlet.jsp.api.version>
         <jstl.version>1.2</jstl.version>
         <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
         <springframework.boot.version>1.4.3.RELEASE</springframework.boot.version>
-        <dbh2.version>1.4.187</dbh2.version>
+        <dbh2.version>1.4.196</dbh2.version>
         <jackson.version>2.8.0</jackson.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
         <maven.war.plugin.version>3.1.0</maven.war.plugin.version>
-        <!-- Spring and Spring Security are on different release schedules -->
+        <junit.version>4.12</junit.version>
+        <javax.validation.api>1.1.0.Final</javax.validation.api>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -78,7 +81,7 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.12</version>
+                <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
             <!-- H2 Driver fo unit tests -->
@@ -116,6 +119,11 @@
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-jpa</artifactId>
                 <version>${spring.data.jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>${spring.data.jpa.commons.version}</version>
             </dependency>
             <!-- persistence -->
             <dependency>
@@ -158,7 +166,7 @@
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
-                <version>1.1.0.Final</version>
+                <version>${javax.validation.api}</version>
             </dependency>
             <!-- spring boot as dependency-->
             <dependency>

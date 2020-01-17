@@ -1,6 +1,5 @@
 package org.spring.tutorial.examples.jpa;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.jpa.domain.User;
@@ -23,7 +22,6 @@ public class UserServiceImplTest {
 
 	@Test
 	@Sql(scripts = "/db/sql/insert-data.sql", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Ignore
 	// TODO resolve the dependencies problems of this project check https://docs.spring.io/platform/docs/Brussels-SR9/reference/html/appendix-dependency-versions.html
 	public void testCreate(){
 		
