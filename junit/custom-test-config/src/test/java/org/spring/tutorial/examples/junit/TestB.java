@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -20,6 +21,10 @@ public class TestB {
     @Test
     public void verifyConfiguration() {
         assertNotNull(user);
+
+        assertEquals(99, user.getId());
+        assertEquals("Spring", user.getName());
+        assertEquals("Tutorial", user.getEmail());
     }
 
 }

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<br/>
+<ul>
+    <li><a style="padding: 0 4px;
+    background-color: #333;
+    color: #fff;
+    font-weight: 400;" th:href="@{/user/index}">Home</a></li>
+</ul>
+<hr/>
+<br/>
+<h1>User Creation</h1>
+<br/>
+<hr/>
+<form action="#" th:action="@{/user}" th:object="${user}" method="post">
+
+    <table border="1">
+        <tbody>
+        <tr>
+            <th>User Id :</th>
+            <td><input type="number" th:field="*{id}"/></td>
+            <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">Content error message</td>
+        </tr>
+        <tr>
+            <th>User Name :</th>
+            <td><input type="text" th:field="*{name}"/></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Content error message</td>
+        </tr>
+        <tr>
+            <th>E-mail :</th>
+            <td><input type="text" th:field="*{email}"/></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Content error message</td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input type="submit"/></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

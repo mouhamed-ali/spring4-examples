@@ -15,10 +15,6 @@ public class ConfigClass {
 			@Value("#{'${db.users}'.split(',')}") String[] values
 			) {
 
-		/*
-		 * on peut aussi utilis� cette annotation
-		 * @Value("${db.users}")
-		 */
 		PropertiesWrapper propertiesWrapper = new PropertiesWrapper(); 
 		for(String value : values){
 			propertiesWrapper.setProperty(value);

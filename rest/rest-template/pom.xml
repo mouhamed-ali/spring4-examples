@@ -33,7 +33,7 @@
             <artifactId>junit</artifactId>
         </dependency>
 
-        <!--Rest Template dependency -->
+        <!--Rest Template dependency : will be used only here-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>

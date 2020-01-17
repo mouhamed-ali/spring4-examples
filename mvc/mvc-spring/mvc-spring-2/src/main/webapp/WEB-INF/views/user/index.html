@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../css/style.css" th:href="@{/css/style.css}"/>
+    <!--
+    You will need to use th:href attribute for referring css files. Here is a sample from thymeleaf tutorial.
+    If thymeleaf can not evaluate th:href value, it defaults to href value
+    -->
+</head>
+<body>
+<br/>
+<h1>User Manager</h1>
+<br/>
+<hr/>
+<br/>
+<ul>
+    <li>
+        <a th:href="@{/user/add}" class="btn-bootstrap">Add User</a>
+    </li>
+    <li><a th:href="@{/user}" class="btn-bootstrap">Show Users</a></li>
+</ul>
+<br/>
+<hr/>
+<br/>
+<span th:if="${message}">
+<label th:text="${message}"></label>
+</span>
+<br/>
+<hr/>
+<img th:src="@{/images/thymeleaf.png}"/>
+</body>
+</html>
