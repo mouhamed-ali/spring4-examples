@@ -54,9 +54,11 @@ It shows the versions compatibility. It's gonna be use easy to migrate versions 
 
 ## Running the tests
 
-We are using a travis job to run tests before merging branches. Each tme we create a merge request, travis will download our code on a docker image and run the tests after.
+We are using a travis job to run tests before merging branches. Each tme we create a merge request, travis will download our code and run the tests after.
 
-You can check the travis and the docker files to know more.
+You can check the travis file to know more or just check this link :
+
+- https://docs.travis-ci.com/user/languages/java/#examples
 
 For unit tests, you gonna find them in each module + some explanations in the source code also.
 
@@ -65,8 +67,7 @@ For unit tests, you gonna find them in each module + some explanations in the so
 * Java - openjdk version "1.8.0_232"
 * [Maven](https://maven.apache.org/) - Dependency Management (version 3.6.0)
 * [Intellij](https://www.jetbrains.com/) - IDE (version 11.0.5)
-* [Travis](http://travis-ci.org/)
-* [Docker](https://www.docker.com/)
+* [Travis](http://travis-ci.org/) - CI/CD
 
 
 ## Authors
