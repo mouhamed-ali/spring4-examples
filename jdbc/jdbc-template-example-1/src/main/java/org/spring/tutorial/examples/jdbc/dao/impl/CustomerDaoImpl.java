@@ -2,10 +2,10 @@ package org.spring.tutorial.examples.jdbc.dao.impl;
 
 import org.spring.tutorial.examples.jdbc.dao.CustomerDao;
 import org.spring.tutorial.examples.jdbc.entity.Customer;
+import org.spring.tutorial.examples.jdbc.mapper.CustomerRowMapper;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class CustomerDaoImpl implements CustomerDao {
@@ -16,15 +16,23 @@ public class CustomerDaoImpl implements CustomerDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    @Override
-    public Customer findById(Integer integer) {
 
-        return null;
+    @Override
+    public Customer getCustomersByNationality(String nationality) {
+
+        try {
+            String query = "SELECT * FROM CUSTOMER WHERE BIRTH_PLACE = ?";
+            return jdbcTemplate.queryForObject(query, new Object[]{nationality}, new CustomerRowMapper());
+        }catch (EmptyResultDataAccessException ex){
+            return null;
+        }
     }
 
-    @Override
-    public List<Customer> findAll() {
 
-        throw new RuntimeException("not yet implemented");
+    @Override
+    public int addCustomer() {
+        return jdbcTemplate.update(
+                "INSERT INTO customer VALUES (99, 'spring', 'jdbc', 'jdbc@gmail.com', '+33 6 xx xx xx xx' , '11/11/2011', 'France')"
+        );
     }
 }
