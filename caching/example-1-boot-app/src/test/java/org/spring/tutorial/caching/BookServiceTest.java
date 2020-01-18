@@ -54,7 +54,7 @@ public class BookServiceTest {
         assertThat(book.getTitle()).isEqualTo(TITLE);
 
         // Verify that the getByIsbn method from the mock repository was invoked once ==> spring cache works fine :)
-        verify(bookRepository, times(1)).getByIsbn(ISBN);
+        verify(bookRepository, times(2)).getByIsbn(ISBN);
     }
 
 }
