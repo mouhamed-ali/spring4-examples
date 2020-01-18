@@ -1,0 +1,17 @@
+# Travis CI Java documentation can be found in:
+# https://docs.travis-ci.com/user/languages/java/
+
+# We will use Ubuntu 18.04
+dist: xenial
+
+# This enables the 'defaults' to test java applications:
+language: java
+
+# We can specify a list of JDKs to be used for testing here
+jdk:
+  - openjdk8
+
+# run build only for merge request on the master branch
+branches:
+  only:
+    - master
