@@ -29,14 +29,14 @@ public class BookServiceTest {
     /*
      *    @MockBean annotation creates a mock for BookRepository. This mock is used in the Spring Context instead of the real BookRepository.
      */
-            BookRepository bookRepository;
+    BookRepository bookRepository;
 
     @Autowired
     /*
      * Pick the Business Service from the Spring Context and autowire it in.
      * this bookRepository mock will be injected in this bean
      */
-            BookService bookService;
+    BookService bookService;
 
     @Test
     public void getBookIsbnTest() {
@@ -54,7 +54,7 @@ public class BookServiceTest {
         assertThat(book.getTitle()).isEqualTo(TITLE);
 
         // Verify that the getByIsbn method from the mock repository was invoked once ==> spring cache works fine :)
-        verify(bookRepository, times(2)).getByIsbn(ISBN);
+        verify(bookRepository, times(1)).getByIsbn(ISBN);
     }
 
 }
