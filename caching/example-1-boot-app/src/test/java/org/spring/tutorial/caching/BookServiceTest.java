@@ -27,16 +27,16 @@ public class BookServiceTest {
     public static final String TITLE = "Mockito by examples";
     @MockBean
     /*
-         @MockBean annotation creates a mock for BookRepository. This mock is used in the Spring Context instead of the real BookRepository.
-    */
-            BookRepository bookRepository;
+     *    @MockBean annotation creates a mock for BookRepository. This mock is used in the Spring Context instead of the real BookRepository.
+     */
+    BookRepository bookRepository;
 
     @Autowired
     /*
-        Pick the Business Service from the Spring Context and autowire it in.
-        this bookRepository mock will be injected in this bean
-    */
-            BookService bookService;
+     * Pick the Business Service from the Spring Context and autowire it in.
+     * this bookRepository mock will be injected in this bean
+     */
+    BookService bookService;
 
     @Test
     public void getBookIsbnTest() {

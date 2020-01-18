@@ -1,6 +1,7 @@
 package org.spring.tutorial.examples.jdbc.dao.impl;
 
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.jdbc.ApplicationConfig;
@@ -19,16 +20,20 @@ public class AccountDaoImplTest {
     AccountDaoImpl accountDao;
 
     @Test
-    public void testFindByCustomerId() {
+    public void testFindAll() {
 
-        List<Account> accounts = accountDao.getAccountsByCustomerId(1);
-        accounts.forEach(System.out::println);
+        List<Account> accounts = accountDao.findAll();
+        Assert.assertEquals(5,accounts.size());
     }
 
     @Test
     public void testFindById() {
 
         Account account = accountDao.findById(21);
-        System.out.println(account);
+        Assert.assertEquals(21l,account.getId().longValue());
+        Assert.assertEquals("223.5", account.getBalance().toString());
+        Assert.assertEquals("account21", account.getAccountName());
+        Assert.assertEquals("08/08/2018", account.getDateOpened());
+        Assert.assertEquals(1l, account.getCustomerId().longValue());
     }
 }
