@@ -7,4 +7,6 @@ public interface CustomerDao {
     Customer getCustomersByNationality(String customerName);
 
     int addCustomer();
+
+    Customer getById(Integer id);
 }
