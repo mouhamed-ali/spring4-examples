@@ -2,8 +2,10 @@ package org.spring.tutorial.examples.jpa.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
 
 	@Id
@@ -12,7 +14,6 @@ public class User {
 	private String email;
 	
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(long id, String name, String email) {
