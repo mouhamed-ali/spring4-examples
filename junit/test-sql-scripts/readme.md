@@ -5,7 +5,7 @@ In this article, we will explain how to use the @Sql annotation in unit tests.
 
 ## Overview
 
-This is example of how to use @Sql annotation to run a script before executing a test or after and some other features.
+This is example of how to use the @Sql annotation to run a sql script before executing a test or after and some other features.
 
 
 ### Running the tests

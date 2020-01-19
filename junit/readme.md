@@ -9,6 +9,5 @@ junit
 └─── custom-test-config
 └─── junit-java-config
 └─── junit-xml-config
-└─── test-context-loading
 └─── test-sql-scripts
 ```
