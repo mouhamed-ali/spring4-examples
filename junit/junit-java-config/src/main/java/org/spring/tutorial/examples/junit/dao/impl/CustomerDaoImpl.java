@@ -2,9 +2,11 @@ package org.spring.tutorial.examples.junit.dao.impl;
 
 import org.spring.tutorial.examples.junit.dao.CustomerDao;
 import org.spring.tutorial.examples.junit.entities.Customer;
+
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
+import java.util.Optional;
 
 public class CustomerDaoImpl implements CustomerDao {
 
@@ -15,14 +17,16 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 	
 	public Customer findById(Long id) {
-		
-		for(Customer c : listCustomers){
 
-			if(Long.compare(c.getIdetifier(), id)==0){
-				return c;
-			}
+		Optional<Customer> customer = listCustomers
+				.stream()
+				.filter(cust -> cust.getIdentifier()==id)
+				.findFirst();
+		if(customer.isPresent()){
+			return customer.get();
+		}else{
+			return null;
 		}
-		return null;
 	}
 	
 	@PostConstruct

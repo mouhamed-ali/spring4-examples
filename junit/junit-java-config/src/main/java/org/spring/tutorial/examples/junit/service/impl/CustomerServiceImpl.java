@@ -11,7 +11,7 @@ public class CustomerServiceImpl {
 	@Autowired
 	private CustomerDao dao;
 	
-	public Customer retournerParIdentifiant(Long id){
+	public Customer getById(Long id){
 		
 		return dao.findById(id);
 	}
