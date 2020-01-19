@@ -15,3 +15,10 @@ jdk:
 branches:
   only:
     - master
+
+script: "mvn cobertura:cobertura"
+
+# This is to enable CodeCov's coverage
+# If a build is successful, the code is submitted for coverage analysis
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t "$CODE_COV_TOKEN"
