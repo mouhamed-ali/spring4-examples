@@ -3,6 +3,7 @@ package org.spring.tutorial.examples.jdbc.dao.impl;
 import org.spring.tutorial.examples.jdbc.dao.AccountDao;
 import org.spring.tutorial.examples.jdbc.entity.Account;
 import org.spring.tutorial.examples.jdbc.mapper.AccountRowMapper;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -36,10 +37,14 @@ public class AccountDaoImpl implements AccountDao {
     @Override
     public List<Account> findAll() {
 
+        // we have two implementations here, we gonna choose the second
+        return findAlls();
+    }
+
+    public List<Account> findAlles(){
+
         String sql = "SELECT * FROM account";
-
         List<Account> accounts = new ArrayList<>();
-
         List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
         for (Map row : rows) {
             Account account = new Account();
@@ -51,6 +56,13 @@ public class AccountDaoImpl implements AccountDao {
             accounts.add(account);
         }
 
+        return accounts;
+    }
+
+    public List<Account> findAlls(){
+
+        String sql = "SELECT * FROM account";
+        List<Account> accounts  = jdbcTemplate.query(sql,new BeanPropertyRowMapper(Account.class));
         return accounts;
     }
 }
