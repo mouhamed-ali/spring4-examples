@@ -2,32 +2,31 @@ package org.spring.tutorial.examples.junit.entities;
 
 public class Customer {
 
-	private Long idetifier;
+	private Long identifier;
 	private String firstName;
 	private String lastName;
 	
 	@Override
 	public String toString() {
-		return "Customer [idetifier=" + idetifier + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Customer [identifier=" + identifier + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
-	public Customer(Long idetifier, String firstName, String lastName) {
+	public Customer(Long identifier, String firstName, String lastName) {
 		super();
-		this.idetifier = idetifier;
+		this.identifier = identifier;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 	
 	public Customer() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Long getIdetifier() {
-		return idetifier;
+	public Long getIdentifier() {
+		return identifier;
 	}
 
-	public void setIdetifier(Long idetifier) {
-		this.idetifier = idetifier;
+	public void setIdentifier(Long identifier) {
+		this.identifier = identifier;
 	}
 
 	public String getFirstName() {

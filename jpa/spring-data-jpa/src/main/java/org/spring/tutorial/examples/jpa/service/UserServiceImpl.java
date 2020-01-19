@@ -1,12 +1,12 @@
 package org.spring.tutorial.examples.jpa.service;
 
-import java.util.List;
-
 import org.spring.tutorial.examples.jpa.dao.IUserDao;
 import org.spring.tutorial.examples.jpa.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl{
@@ -29,7 +29,7 @@ public class UserServiceImpl{
 		return userDao.findByEmail(mail);
 	}
 	
-	public User findUserByEmailEtName(String mail,String name) {
+	public User findUserByEmailAndName(String mail, String name) {
 		return userDao.findByEmailAndName(mail,name);
 	}
 	
@@ -45,8 +45,8 @@ public class UserServiceImpl{
 		return userDao.retrieveCount();
 	}
 	
-	public User retrieveUserByItsId(Long id, String mail) {
-		return userDao.retrieveById(id,mail);
+	public User retrieveUserByItsIdOrEmail(Long id, String mail) {
+		return userDao.retrieveByIdOrEmail(id,mail);
 	}
 	
 	public List<User> getAll() {
@@ -107,14 +107,14 @@ public class UserServiceImpl{
 		userDao.flush();
 	}
 	
-	public User selectUserByExample() {
+	public User selectUserByExample(String name) {
 		/*
 		 * we will use here the queryExample matching of spring its like in hibernate we create an example object
 		 * and we try to select objects that looks like it in the database
 		 */
 		User person = new User();                          
-		person.setName("mkyong");
-		ExampleMatcher matcher = ExampleMatcher.matching().withIgnorePaths("email").withIncludeNullValues();
+		person.setName(name);
+		ExampleMatcher matcher = ExampleMatcher.matching().withIgnorePaths("email").withIgnorePaths("id").withIncludeNullValues();
 		Example<User> example = Example.of(person, matcher);
 		return userDao.findOne(example);
 	}

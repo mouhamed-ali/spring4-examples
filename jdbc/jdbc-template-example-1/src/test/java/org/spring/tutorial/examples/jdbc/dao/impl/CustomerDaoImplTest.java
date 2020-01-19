@@ -30,4 +30,16 @@ public class CustomerDaoImplTest {
         int updatedRows = customerDao.addCustomer();
         Assert.assertEquals(1,updatedRows);
     }
+
+    @Test
+    public void testFindById() {
+
+        Customer customer = customerDao.getById(3);
+        Assert.assertEquals("first3",customer.getFirstName());
+        Assert.assertEquals("last3",customer.getLastName());
+        Assert.assertEquals("first3@gmail.com",customer.getEmail());
+        Assert.assertEquals("+33 6 xx xx xx xx",customer.getPhoneNumber());
+        Assert.assertEquals("11/11/2011",customer.getBirthDate());
+        Assert.assertEquals("UK",customer.getBirthPlace());
+    }
 }

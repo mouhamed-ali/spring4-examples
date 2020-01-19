@@ -4,6 +4,7 @@ import org.spring.tutorial.examples.jdbc.dao.CustomerDao;
 import org.spring.tutorial.examples.jdbc.entity.Customer;
 import org.spring.tutorial.examples.jdbc.mapper.CustomerRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -34,5 +35,12 @@ public class CustomerDaoImpl implements CustomerDao {
         return jdbcTemplate.update(
                 "INSERT INTO customer VALUES (99, 'spring', 'jdbc', 'jdbc@gmail.com', '+33 6 xx xx xx xx' , '11/11/2011', 'France')"
         );
+    }
+
+    @Override
+    public Customer getById(Integer id) {
+        String sql =  "SELECT * FROM CUSTOMER WHERE ID = ?";
+        Customer customer = (Customer) jdbcTemplate.queryForObject(sql, new Object[] { id }, new BeanPropertyRowMapper(Customer.class));
+        return customer;
     }
 }

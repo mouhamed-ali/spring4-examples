@@ -13,7 +13,7 @@ public class Main {
 		   
 		CustomerServiceImpl service = (CustomerServiceImpl) applicationContext.getBean("customerServiceImpl");
 	
-		Customer c = service.retournerParIdentifiant(2L);
+		Customer c = service.getById(2L);
 		
 		System.out.println(c);
 	}

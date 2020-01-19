@@ -1,12 +1,12 @@
 package org.spring.tutorial.examples.jpa.dao;
 
-import javax.transaction.Transactional;
-
 import org.spring.tutorial.examples.jpa.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
 
 @Transactional// you can delete this annotation (keep it if you want to manage transactions between IUserService and this class)
 @Repository
@@ -44,7 +44,7 @@ public interface IUserDao extends JpaRepository<User, Long>{
 	 * native query
 	 */
 	@Query(value = "SELECT * FROM USERS WHERE ID = ?1 OR EMAIL = ?2", nativeQuery = true)
-	User retrieveById(Long id, String email);
+	User retrieveByIdOrEmail(Long id, String email);
 	
 	@Query(value = "SELECT COUNT(*) FROM USERS", nativeQuery = true)
 	Integer retrieveCount();

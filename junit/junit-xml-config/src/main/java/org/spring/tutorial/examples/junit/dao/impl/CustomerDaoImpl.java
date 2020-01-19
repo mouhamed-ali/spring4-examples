@@ -6,20 +6,18 @@ import org.spring.tutorial.examples.junit.entities.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 public class CustomerDaoImpl implements CustomerDao {
 
 	private List<Customer> listCustomers;
 	
 	public CustomerDaoImpl() {
-		listCustomers = new ArrayList<Customer>();
+		listCustomers = new ArrayList<>();
 	}
 	
 	public Customer findById(Long id) {
 		
 		for(Customer c : listCustomers){
-			if(Long.compare(c.getIdetifier(), id)==0){
+			if(Long.compare(c.getIdentifier(), id)==0){
 				return c;
 			}
 		}

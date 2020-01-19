@@ -1,6 +1,6 @@
 package org.spring.tutorial.examples.junit;
 
-import java.util.List;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.junit.dao.UserDaoImpl;
@@ -26,7 +26,7 @@ public class UserServicesTest2 {
 	 */
 	@Sql(
 			scripts="/db/sql/update-data.sql"
-			,executionPhase=Sql.ExecutionPhase.AFTER_TEST_METHOD
+			,executionPhase=Sql.ExecutionPhase.BEFORE_TEST_METHOD
 			,config=@SqlConfig(
 					errorMode=ErrorMode.FAIL_ON_ERROR,
 					commentPrefix="//",
@@ -34,14 +34,15 @@ public class UserServicesTest2 {
 					)
 			)
 	/*
-	 * this script will be run after the execution of this method (and other tests if they exists. check application logs)
+	 * this script will be run before the execution of this method (and other test if exists
 	 * if the script generates an exception our test will be in failure (otherwise use ErrorMode.CONTINUE_ON_ERROR )
 	 * commentPrefix and separator used to specialize the generated error script
 	 * ( for comments we will use // and @@ as separator)
 	 */
+	@Sql(scripts = "/db/sql/delete-data.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 	public void test(){
-		System.out.println("----------  Test 1 ----------");
-		List<User> users = dao.findAll();
-		users.forEach(System.out::println);
+		User user = dao.getUserById(1);
+		Assert.assertEquals("spring", user.getName());
+		Assert.assertEquals("mkyong@gmail.com", user.getEmail());
 	}
 }
