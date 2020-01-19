@@ -1,6 +1,7 @@
 # Spring 4 examples
 
 [![Build Status](https://travis-ci.org/amdouni-mohamed-ali/spring4-examples.svg?branch=master)](https://travis-ci.org/amdouni-mohamed-ali/spring4-examples)
+[![codecov](https://codecov.io/gh/amdouni-mohamed-ali/spring4-examples/branch/master/graph/badge.svg)](https://codecov.io/gh/amdouni-mohamed-ali/spring4-examples)
 
 This repository contains simple examples for the different Spring framework modules to showcase the API and how to use it.
 

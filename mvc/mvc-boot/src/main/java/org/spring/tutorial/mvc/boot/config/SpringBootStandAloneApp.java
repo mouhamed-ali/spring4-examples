@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan("org.spring.tutorial.mvc.boot.controllers")
 /*
- * OR JUST USE @SpringBootApplication(scanBasePackages={"com.websystique.springboot"})
+ * OR JUST USE @SpringBootApplication (but you have to make this class in the base package)
  * same as @Configuration @EnableAutoConfiguration @ComponentScan combined
  */
 public class SpringBootStandAloneApp {
