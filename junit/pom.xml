@@ -15,7 +15,6 @@
         <module>junit-java-config</module>
         <module>junit-xml-config</module>
         <module>custom-test-config</module>
-        <module>test-context-loading</module>
         <module>test-sql-scripts</module>
     </modules>
 

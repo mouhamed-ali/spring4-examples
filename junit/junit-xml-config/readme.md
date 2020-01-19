@@ -22,3 +22,26 @@ Process finished with exit code 0
 ```
 
 As you can see from logs, the printed customer line is the toString method of our configured bean.
+
+### Running the tests
+
+You can simply run the unit tests using this command (in the current directory):
+
+```shell script
+$ mvn test
+```
+
+```log
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.556 s
+[INFO] Finished at: 2020-01-19T16:46:41+01:00
+[INFO] ------------------------------------------------------------------------
+salto@salto-Vostro-7590:~/tutorials/java/spring4-examples/junit/junit-xml-config$ 
+```
