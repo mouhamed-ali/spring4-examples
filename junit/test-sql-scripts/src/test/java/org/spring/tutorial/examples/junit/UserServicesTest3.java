@@ -2,6 +2,7 @@ package org.spring.tutorial.examples.junit;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.junit.dao.UserDaoImpl;
@@ -13,7 +14,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=DefaultConfig.class)
@@ -35,9 +35,9 @@ public class UserServicesTest3 implements ApplicationContextAware {
 			,executionPhase=Sql.ExecutionPhase.AFTER_TEST_METHOD
 	)
 	public void test(){
-		System.out.println("----------  Test 1 ----------");
-		List<User> users = dao.findAll();
-		users.forEach(System.out::println);
+		User user = dao.getUserById(1);
+		Assert.assertEquals("mkyong", user.getName());
+		Assert.assertEquals("mkyong@gmail.com", user.getEmail());
 	}
 
 	@After
@@ -45,9 +45,9 @@ public class UserServicesTest3 implements ApplicationContextAware {
 	 * this method will be run after evey test (after every test run)
 	 */
 	public void testAfter(){
-		System.out.println("----------  @After Test 1 ----------");
-		List<User> users = dao.findAll();
-		users.forEach(System.out::println);
+		User user = dao.getUserById(1);
+		Assert.assertEquals("mkyong", user.getName());
+		Assert.assertEquals("mkyong@gmail.com", user.getEmail());
 	}
 
 	@AfterClass
@@ -55,10 +55,10 @@ public class UserServicesTest3 implements ApplicationContextAware {
 	 * this method will be run after all the tests (one time)
 	 */
 	public static void testAfterClass(){
-		System.out.println("----------  @AfterClass Test 1 ----------");
 		UserDaoImpl userDao = (UserDaoImpl) context.getBean("userDaoImpl");
-		List<User> users = userDao.findAll();
-		users.forEach(System.out::println);
+		User user = userDao.getUserById(1);
+		Assert.assertEquals("spring", user.getName());
+		Assert.assertEquals("mkyong@gmail.com", user.getEmail());
 	}
 
 	@Override

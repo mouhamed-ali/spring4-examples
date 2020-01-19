@@ -1,6 +1,6 @@
 package org.spring.tutorial.examples.junit;
 
-import java.util.List;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.junit.dao.UserDaoImpl;
@@ -25,8 +25,8 @@ public class UserServicesTest4 {
 	 * the script will be run before the method execution
 	 */
 	public void test(){
-		System.out.println("----------  Test 1 ----------");
-		List<User> users = dao.findAll();
-		users.forEach(System.out::println);
+		User user = dao.getUserById(99);
+		Assert.assertEquals("last", user.getName());
+		Assert.assertEquals("last@gmail.com", user.getEmail());
 	}
 }
