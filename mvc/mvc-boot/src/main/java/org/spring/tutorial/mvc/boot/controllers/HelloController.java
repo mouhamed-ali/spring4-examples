@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
 
     /*
-        endpoint url : http://localhost:8080/SpringBootStandAloneExample
-        error page example url : http://localhost:8080/SpringBootStandAloneExample/user
+        endpoint url : http://localhost:8080/hello-spring-mvc
+        error page example url : http://localhost:8080/hello-spring-mvc/anyThing
      */
     @RequestMapping("/")
     String home(ModelMap modal) {

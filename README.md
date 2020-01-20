@@ -71,7 +71,13 @@ For unit tests, you gonna find them in each module + some explanations in the so
 * [Maven](https://maven.apache.org/) - Dependency Management (version 3.6.0)
 * [Intellij](https://www.jetbrains.com/) - IDE (version 11.0.5)
 * [Travis](http://travis-ci.org/) - CI/CD
+* [CodeCov](https://codecov.io/) - Test coverage
 
+## Appendices
+
+The list of Spring Boot properties :
+
+- https://docs.spring.io/autorepo/docs/spring-boot/current/reference/htmlsingle/#common-application-properties
 
 ## Authors
 
