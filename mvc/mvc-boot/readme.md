@@ -79,21 +79,30 @@ $ curl localhost:8090/hello-spring-mvc/greeting?name=John
 </html>
 ```
 
-```shell script
-$ curl localhost:8090/hello-spring-mvc/notFound
-```
+- http://localhost:8090/hello-spring-mvc/notFound
 
-```json
-{"timestamp":1579528527995,"status":404,"error":"Not Found","message":"No message available","path":"/hello-spring-mvc/notFound"}
-```
+![mvc-1-error](https://user-images.githubusercontent.com/16627692/72732653-6e4e9b80-3b96-11ea-9586-7314a5c26f44.png)
+
 
 ### Running the tests
+
+We gonna use MockMvc class to mock the controllers responses.
 
 You can simply run the unit tests using this command (in the current directory):
 
 ```shell script
 $ mvn test
 ```
-Or using you IDE. Here is my intellij report :
 
-![junit-sql](https://user-images.githubusercontent.com/16627692/72684705-3e928b80-3ae3-11ea-9332-4899a41bf270.png)
+```log
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.604 s
+[INFO] Finished at: 2020-01-20T15:28:40+01:00
+[INFO] ------------------------------------------------------------------------
+```
