@@ -19,8 +19,8 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"org.spring.tutorial.mvc.dao"})//application repository
-@ComponentScan(basePackages = {"org.spring.tutorial.mvc.dao", "org.spring.tutorial.mvc.service"})
+@EnableJpaRepositories(basePackages = {"org.spring.tutorial.mvc.dao"})
+@ComponentScan(basePackages = {"org.spring.tutorial.mvc.service"})
 @EnableTransactionManagement
 public class RootConfig {
 
@@ -29,7 +29,7 @@ public class RootConfig {
 
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2)
-                .addScript("db/sqls/create-db.sql")
+                .addScript("db/scripts/create-db.sql")
                 .build();
         return db;
     }

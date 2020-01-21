@@ -16,7 +16,7 @@ public class UserController {
     IUserService userService;
 
     /*
-     * http://localhost:8080/mvc-spring-1/hello-mvc/user/index
+     * http://localhost:8080/mvc-spring-1/hello-mvc/user/index if you deploy it on you local machine
      */
     @RequestMapping(path = {"/index", "/index/"})
     public String returnIndex() {
@@ -32,7 +32,7 @@ public class UserController {
          * add_user is the name of the view; spring intercepts the request (by the dispatcher servlet of this url)
          *, provided us with the model to specify the data that we will send to the view and then he will
          * transfer this model to the view to use it
-         * dispatcer servlet -> controller -> view Resolver (the one that will return the view based on the string
+         * dispatcher servlet -> controller -> view Resolver (the one that will return the view based on the string
          * returned in our method) -> view -> dispatcher servlet: see image in the resources
          */
     }
@@ -41,7 +41,7 @@ public class UserController {
     public String addNewUser(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
 
         user = userService.createUser(user);
-        model.addAttribute("message", user.toString() + " successfuly created");
+        model.addAttribute("message", user.toString() + " successfully created");
         return "index";
     }
 
@@ -56,7 +56,7 @@ public class UserController {
     public String deleteUser(@PathVariable("userId") long userId, Model model) {
 
         userService.removeById(userId);
-        model.addAttribute("message", String.format("User [%s] was successfuly deleted", String.valueOf(userId)));
+        model.addAttribute("message", String.format("User [%s] was successfully deleted", String.valueOf(userId)));
         return "index";
     }
 
@@ -67,7 +67,7 @@ public class UserController {
             userService.removeById(userId);
         }
         userService.updateUser(user);
-        model.addAttribute("message", String.format("User[%s] was successfuly updated", String.valueOf(user.getId())));
+        model.addAttribute("message", String.format("User[%s] was successfully updated", String.valueOf(user.getId())));
         return "index";
     }
 

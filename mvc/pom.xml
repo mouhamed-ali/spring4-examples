@@ -21,7 +21,7 @@
             <dependency>
                 <!-- import the pom parent dependency management section -->
                 <groupId>org.spring.tutorial</groupId>
-                <artifactId>examples</artifactId>
+                <artifactId>spring4-examples</artifactId>
                 <version>${project.parent.version}</version>
                 <scope>import</scope>
                 <!--
