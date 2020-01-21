@@ -74,11 +74,12 @@ For unit tests, you gonna find them in each module + some explanations in the so
 
 ## Built With
 
-* Java - openjdk version "1.8.0_232"
+* [Java](https://openjdk.java.net/) - openjdk version "1.8.0_232"
 * [Maven](https://maven.apache.org/) - Dependency Management (version 3.6.0)
 * [Intellij](https://www.jetbrains.com/) - IDE (version 11.0.5)
 * [Travis](http://travis-ci.org/) - CI/CD
 * [CodeCov](https://codecov.io/) - Test coverage
+* [Docker](https://www.docker.com/) - To create, deploy, and run applications using containers
 
 ## Appendices
 

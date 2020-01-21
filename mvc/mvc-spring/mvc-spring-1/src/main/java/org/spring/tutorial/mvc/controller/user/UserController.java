@@ -41,7 +41,7 @@ public class UserController {
     public String addNewUser(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
 
         user = userService.createUser(user);
-        model.addAttribute("message", user.toString() + " successfuly created");
+        model.addAttribute("message", user.toString() + " successfully created");
         return "index";
     }
 
@@ -56,7 +56,7 @@ public class UserController {
     public String deleteUser(@PathVariable("userId") long userId, Model model) {
 
         userService.removeById(userId);
-        model.addAttribute("message", String.format("User [%s] was successfuly deleted", String.valueOf(userId)));
+        model.addAttribute("message", String.format("User [%s] was successfully deleted", String.valueOf(userId)));
         return "index";
     }
 
@@ -67,7 +67,7 @@ public class UserController {
             userService.removeById(userId);
         }
         userService.updateUser(user);
-        model.addAttribute("message", String.format("User[%s] was successfuly updated", String.valueOf(user.getId())));
+        model.addAttribute("message", String.format("User[%s] was successfully updated", String.valueOf(user.getId())));
         return "index";
     }
 
