@@ -1,6 +1,6 @@
 # MVC spring boot
 
-In this article, we will provide a simple example of how to serve web pages using spring boot.
+In this article, we will provide a simple example of how to serve web pages using spring boot. We are using thymeleaf as a template engine.
 
 
 ## Overview

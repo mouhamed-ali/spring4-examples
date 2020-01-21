@@ -29,6 +29,7 @@ To create your development environment, you will need to :
 - install maven
 - install git to clone the project
 - you favorite IDE (i'm using intellij) 
+- install docker on your machine
 
 ### Installing
 
@@ -54,6 +55,12 @@ If everything turns out alright, you should end up with this result :
 - https://docs.spring.io/platform/docs/Brussels-SR4/reference/html/appendix-dependency-versions.html
 
 It shows the versions compatibility. It's gonna be use easy to migrate versions using it. Otherwise, you can use the spring bom project to manage the dependencies versions. 
+
+In some modules we are using docker to deploy the app so you have to install it. One of the examples is this :
+
+- https://github.com/amdouni-mohamed-ali/spring4-examples/tree/master/mvc/mvc-spring/mvc-spring-1
+
+as the packaging of the app is war, we are using a tomcat:7 docker image to deploy it.
 
 ## Running the tests
 
