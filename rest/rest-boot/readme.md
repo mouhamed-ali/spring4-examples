@@ -56,6 +56,58 @@ $ curl localhost:8080/api/user/1
 {"id":1,"login":"user 1","password":"password 1"}
 ```
 
+* Create a new one :
+
+```shell script
+$ curl -X POST -i -H "Content-Type: application/json" -d '{"id":"99", "login":"login", "password":"password"}' http://localhost:8080/api/user
+```
+
+```log
+HTTP/1.1 201 
+Location: http://localhost:8080/api/user/99
+Content-Length: 0
+Date: Wed, 22 Jan 2020 16:49:21 GMT
+
+```
+
+If you rerun the last command you gonna have this error :
+
+```json
+{"errorMessage":"Creation failed. A User with the same id already exist."}
+```
+
+* Update it :
+
+```shell script
+$ curl -X PUT -i -H "Content-Type: application/json" -d '{"id":"77", "login":"updated", "password":"password"}' http://localhost:8080/api/user/99
+```
+
+```log
+HTTP/1.1 200 
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Wed, 22 Jan 2020 16:53:15 GMT
+
+{"id":77,"login":"updated","password":"password"}
+
+```
+
+* Delete it :
+
+```shell script
+$ curl -X DELETE -i -H "Content-Type: application/json" http://localhost:8080/api/user/99
+```
+
+```log
+HTTP/1.1 204 
+Date: Wed, 22 Jan 2020 16:55:55 GMT
+
+```
+
+More examples of how to use curl here :
+
+- https://gist.github.com/subfuzion/08c5d85437d5d4f00e58
+
 And if you are not a super fan of the curl command line you can use the postman collection in the resources directory (`resources/postman`).
 
 ![rest-api-boot](https://user-images.githubusercontent.com/16627692/72885451-3a938300-3d08-11ea-99cb-bb587a8e32e8.png)
