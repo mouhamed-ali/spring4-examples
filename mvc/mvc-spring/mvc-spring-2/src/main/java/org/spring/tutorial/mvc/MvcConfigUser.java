@@ -21,7 +21,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 public class MvcConfigUser extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
     /*
-     * our second dispatcher servlet
+     * our second dispatcher servlet for serving thymeleaf pages
      * check this :
      * http://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html#spring-mvc-configuration
      */

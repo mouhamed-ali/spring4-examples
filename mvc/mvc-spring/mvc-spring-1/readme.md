@@ -6,7 +6,7 @@ In this project, we will develop a simple crud web app using spring mvc.
 
 This is a simple example of how you can create a crud application using :
 
-- spring mvc to serve web pages
+- spring mvc to serve web pages (jsp pages)
 - spring data jpa to manage the persistence of your app
 - spring test to make mvc tests
 
