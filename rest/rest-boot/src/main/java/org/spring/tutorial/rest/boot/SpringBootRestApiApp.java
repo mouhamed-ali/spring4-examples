@@ -8,9 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         scanBasePackages = {
                 "org.spring.tutorial.rest.boot.controllers"
                 ,
-                "org.spring.tutorial.rest.boot.services.impl"
+                "org.spring.tutorial.rest.boot.services"
         }
 )
+// scanBasePackages is not necessary in this example. you can just use  @SpringBootApplication
 // @SpringBootApplication == @Configuration + @EnableAutoConfiguration + @ComponentScan
 public class SpringBootRestApiApp {
 

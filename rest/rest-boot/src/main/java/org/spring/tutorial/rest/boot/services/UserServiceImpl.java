@@ -1,13 +1,13 @@
-package org.spring.tutorial.rest.boot.services.impl;
+package org.spring.tutorial.rest.boot.services;
 
 import org.spring.tutorial.rest.boot.models.User;
-import org.spring.tutorial.rest.boot.services.UserService;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
 
     private List<User> usersList;
@@ -28,14 +28,18 @@ public class UserServiceImpl implements UserService {
 
     public User findById(int id) {
 
-        for (User user : usersList) {
-            if (user.getId() == id)
-                return user;
+        Optional<User> user = usersList.stream()
+                .filter(u -> u.getId()==id)
+                .findFirst();
+        if(user.isPresent()){
+            return user.get();
+        }else{
+            return null;
         }
-        return null;
     }
 
     public boolean isUserExist(User user) {
+
         if (usersList.contains(user))
             return true;
         return false;
@@ -46,8 +50,12 @@ public class UserServiceImpl implements UserService {
         usersList.add(user);
     }
 
-    public void updateUser(User currentUser) {
+    public void updateUser(int lastUserID, User newUser) {
 
+        int index = usersList.indexOf(findById(lastUserID));
+        if(index>0){
+            usersList.set(index, newUser);
+        }
     }
 
     public void deleteUserById(int id) {
@@ -57,7 +65,7 @@ public class UserServiceImpl implements UserService {
 
     public void deleteAllUsers() {
 
-        usersList = new ArrayList<>();
+        usersList.clear();
     }
 
 
