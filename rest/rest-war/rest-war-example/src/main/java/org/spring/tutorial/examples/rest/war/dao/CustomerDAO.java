@@ -12,9 +12,13 @@ import java.util.Optional;
 public class CustomerDAO {
 
     // Dummy database. Initialize with some dummy values.
-    private static List<Customer> customers;
+    private List<Customer> customers;
 
-    static {
+    public CustomerDAO(){
+        this.init();
+    }
+
+    public void init() {
         customers = new ArrayList<Customer>();
         customers.add(new Customer(101, "John", "Doe", "djohn@gmail.com", "121-232-3435"));
         customers.add(new Customer(201, "Russ", "Smith", "sruss@gmail.com", "343-545-2345"));
@@ -48,15 +52,18 @@ public class CustomerDAO {
     }
 
     /**
-     * Create new customer in dummy database. Updates the id and insert new
-     * customer in list.
+     * Create new customer in dummy database.
      *
      * @param customer Customer object
      * @return customer object with updated id
      */
     public Customer create(Customer customer) {
-        customer.setId(System.currentTimeMillis());
-        customers.add(customer);
+
+        if(get(customer.getId())!=null){
+            update(customer.getId(),customer);
+        }else{
+            customers.add(customer);
+        }
         return get(customer.getId());
     }
 

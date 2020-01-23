@@ -8,6 +8,7 @@ import org.spring.tutorial.examples.rest.war.config.AppConfig;
 import org.spring.tutorial.examples.rest.war.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -25,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AppConfig.class})
 @WebAppConfiguration
+@DirtiesContext
 public class CustomerRestControllerTest {
 
     public static final String CUSTOMERS_ENDPOINT = "/customers";

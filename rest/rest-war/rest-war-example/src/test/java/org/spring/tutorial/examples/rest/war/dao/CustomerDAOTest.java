@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.rest.war.config.AppConfig;
 import org.spring.tutorial.examples.rest.war.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -14,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
 @WebAppConfiguration
+@DirtiesContext
 public class CustomerDAOTest {
 
     @Autowired
@@ -26,7 +28,7 @@ public class CustomerDAOTest {
         assertThat(customerDAO.list()).size().isEqualTo(3);
 
         //test create entity
-        Customer customer = new Customer(401, "John", "Snow", "john@gmail.com", "876-237-2987");
+        Customer customer = new Customer(701, "John", "Snow", "john@gmail.com", "876-237-2987");
         customerDAO.create(customer);
         assertThat(customerDAO.list()).size().isEqualTo(4);
 
