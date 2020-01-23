@@ -41,15 +41,38 @@ To shutdown the app, click on ctrl+c or use this command :
 $ docker-compose down
 ```
 
-After running the application, you can get access from this link :
+After running the application, you can test the rest endpoints using these commands :
 
-- http://localhost:8080/mvc-spring-1/hello-mvc/user/index
+* List all customers :
 
-You can now manage users from the provided links (Add user and show users).
+```shell script
+$ curl http://localhost:8080/rest-war-example/customers
+```
+
+```json
+[{"id":101,"firstName":"John","lastName":"Doe","email":"djohn@gmail.com","mobile":"121-232-3435","dateOfBirth":1579789950273},{"id":201,"firstName":"Russ","lastName":"Smith","email":"sruss@gmail.com","mobile":"343-545-2345","dateOfBirth":1579789950273},{"id":301,"firstName":"Kate","lastName":"Williams","email":"kwilliams@gmail.com","mobile":"876-237-2987","dateOfBirth":1579789950273}]
+```
+
+* Retrieve a customer by id :
+
+```shell script
+$ curl http://localhost:8080/rest-war-example/customers/101
+```
+
+```json
+{"id":101,"firstName":"John","lastName":"Doe","email":"djohn@gmail.com","mobile":"121-232-3435","dateOfBirth":1579789950273}
+```
+
+More examples of how to use curl here :
+
+- https://gist.github.com/subfuzion/08c5d85437d5d4f00e58
+
+And if you are not a super fan of the curl command line you can use the postman collection in the resources directory (`resources/postman`).
+
+![spring-rest-war-1-postman](https://user-images.githubusercontent.com/16627692/72993910-76a51180-3df6-11ea-8d34-78079acf1a29.png)
+
 
 ### Running the tests
-
-We gonna use MockMvc class to mock the controllers responses. Check the code, you gonna find all needed methods to test you mvc controller. There is also a class test of the persistence layer.
 
 You can simply run the unit tests using this command (in the current directory):
 
@@ -60,16 +83,24 @@ $ mvn test
 ```log
 Results :
 
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
 
+[INFO] 
+[INFO] --- maven-war-plugin:2.4:war (default-war) @ rest-war-example ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [rest-war-example] in [/home/salto/tutorials/java/spring4-examples/rest/rest-war/rest-war-example/target/rest-war-example]
+[INFO] Processing war project
+[INFO] Webapp assembled in [87 msecs]
+[INFO] Building war: /home/salto/tutorials/java/spring4-examples/rest/rest-war/rest-war-example/target/rest-war-example.war
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  2.680 s
-[INFO] Finished at: 2020-01-21T15:38:14+01:00
+[INFO] Total time:  2.973 s
+[INFO] Finished at: 2020-01-23T15:26:22+01:00
 [INFO] ------------------------------------------------------------------------
+
 ```
 
 My intellij report :
 
-![mv1-test-report](https://user-images.githubusercontent.com/16627692/72813615-f353b680-3c63-11ea-8325-3f0fce5d6dc9.png)
+![spring-rest-war-1-report](https://user-images.githubusercontent.com/16627692/72992530-2b89ff00-3df4-11ea-91e9-39afd86700bc.png)
