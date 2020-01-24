@@ -9,11 +9,11 @@ Users of this app are hard coded in the `SecurityConfigBasic.java` file. You gon
 
 The list of users and roles is as below :
 
-|  User  | Roles   |
-|---|---|
-| user  | USER  |
-| admin  | ADMIN  |
-| super-admin  | ADMIN and SUPER_ADMIN  |
+|  User | Password | Roles   |
+|---|---|---|
+| user | password | USER  |
+| admin | password | ADMIN  |
+| super-admin |  password  | ADMIN and SUPER_ADMIN  |
 
 
 ### Running the application

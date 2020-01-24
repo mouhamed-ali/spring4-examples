@@ -45,11 +45,4 @@ public class LoginController {
 
         return "shared/index";
     }
-
-//	@RequestMapping(value = {"/"}, method = RequestMethod.GET)
-//	public ModelAndView welcomePage() {
-//		ModelAndView model = new ModelAndView();
-//		model.setViewName("templates/loginPage");
-//		return model;
-//	}
 }
