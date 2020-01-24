@@ -2,7 +2,7 @@
 
 In this project, we will develop a  crud web app using spring mvc.
 
-## Project structure
+## Overview
 
 This is the same example as the last one (spring example 1) except that :
 

@@ -2,7 +2,7 @@
 
 In this project, we will develop a simple crud web app using spring rest.
 
-## Project structure
+## Overview
 
 This is the same as the last example (a rest crud application), but in this project we will explain how :
 

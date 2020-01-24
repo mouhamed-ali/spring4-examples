@@ -2,7 +2,7 @@
 
 In this project, we will develop a simple crud web app using spring rest.
 
-## Project structure
+## Overview
 
 This is a simple example of how you can create a crud application using spring rest but our configuration will be done using xml files and not annotations this time.
 

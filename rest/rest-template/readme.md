@@ -2,7 +2,7 @@
 
 In this project, we will provide simple examples of how to use the spring rest template.
 
-## Project structure
+## Overview
 
 Spring rest template is used to make http calls to an existing server and retrieve response. 
 Most of the time the response is in a json format.

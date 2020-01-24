@@ -2,7 +2,7 @@
 
 In this project, we will develop a simple crud web app using spring mvc.
 
-## Project structure
+## Overview
 
 This is a simple example of how you can create a crud application using :
 
