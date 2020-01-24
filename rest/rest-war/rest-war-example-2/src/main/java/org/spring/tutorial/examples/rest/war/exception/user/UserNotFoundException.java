@@ -1,4 +1,4 @@
-package org.spring.tutorial.examples.rest.war.exception;
+package org.spring.tutorial.examples.rest.war.exception.user;
 
 
 public class UserNotFoundException extends RuntimeException {

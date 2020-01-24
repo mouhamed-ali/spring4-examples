@@ -1,10 +1,12 @@
 package org.spring.tutorial.examples.rest.war.controller;
 
 import org.spring.tutorial.examples.rest.war.domain.Book;
-import org.spring.tutorial.examples.rest.war.exception.BookNotFoundException;
+import org.spring.tutorial.examples.rest.war.exception.book.BookNotFoundException;
+import org.spring.tutorial.examples.rest.war.exception.book.NotAuthorizedException;
 import org.spring.tutorial.examples.rest.war.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,18 +16,17 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
 
     /*
-        http://localhost:8080/rest-war-example-2/books
+     * http://localhost:8080/rest-war-example-2/books
+     * this will handle json and xml requests
      */
     @Autowired
     BookServiceImpl service;
 
     @GetMapping(path = {"/{name}"}, produces = {"application/json", "application/xml"})
-    @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public Book findOne(@PathVariable("name") String id) {
+    public Book findOne(@PathVariable("name") String name) {
 
-        //TODO : add xml support to the Book entity
-        return service.findBookById(id);
+        return service.findBookByName(name);
     }
 
     /*
@@ -45,24 +46,34 @@ public class BookController {
     }
 
     /*
-         another reason to separate methods. the reason for separation is that we
-        want to generate an exception in the case of the xml response
+     * another reason to separate methods. if we want to generate an exception in the case of the xml response
+     * check this to know more about ResponseEntity<Void> : https://stackoverflow.com/questions/26550124/spring-returning-empty-http-responses-with-responseentityvoid-doesnt-work
      */
-    @DeleteMapping(path = "/{name}", produces = "application/json")
-    public void delete(@PathVariable("name") String name) {
+    @DeleteMapping(path = "/{id}", produces = "application/json")
+    public ResponseEntity<Void> delete(@PathVariable("id") Integer id) {
 
-        //TODO doest not work
-        service.deleteBook(name);
-    }
-
-    @DeleteMapping(path = "/{name}", produces = "application/xml")
-    public void deleteXml(@PathVariable("name") String name) throws BookNotFoundException {
-
-        //TODO doest not work
-        if (name.equals("Les miserables")) {
+        if (service.findBookById(id)==null) {
             throw new BookNotFoundException("not found book");
         }
-        service.deleteBook(name);
+        service.deleteBookById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/{id}", produces = "application/xml")
+    @ResponseStatus(value=HttpStatus.CONFLICT, reason="Well you are not authorized to get this resource")  // 409
+    @ExceptionHandler(NotAuthorizedException.class)
+    // use @ExceptionHandler with exceptions that don't have the @ResponseStatus. Gonna be always exceptions that you didn't create or you don't
+    // have control on them like java exception
+    /*
+     * if the method generates the NotAuthorizedException exception we will generate an HttpStatus.CONFLICT as status
+     */
+    public ResponseEntity<Void> deleteXml(@PathVariable("id") Integer id) {
+
+        if (service.findBookById(id)==null) {
+            throw new NotAuthorizedException("Not authorized");
+        }
+        service.deleteBookById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

@@ -2,7 +2,6 @@ package org.spring.tutorial.examples.rest.war.service;
 
 import org.spring.tutorial.examples.rest.war.domain.User;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +9,10 @@ public class UserServiceImpl {
 
     private List<User> users;
 
-    @PostConstruct
+    public UserServiceImpl(){
+        this.init();
+    }
+
     public void init() {
 
         users = new ArrayList<User>();

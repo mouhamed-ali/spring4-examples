@@ -1,8 +1,8 @@
 package org.spring.tutorial.examples.rest.war.controller;
 
 import org.spring.tutorial.examples.rest.war.domain.User;
-import org.spring.tutorial.examples.rest.war.exception.AccesDeniedUser;
-import org.spring.tutorial.examples.rest.war.exception.UserNotFoundException;
+import org.spring.tutorial.examples.rest.war.exception.user.AccesDeniedUser;
+import org.spring.tutorial.examples.rest.war.exception.user.UserNotFoundException;
 import org.spring.tutorial.examples.rest.war.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,6 @@ public class UserController {
     UserServiceImpl service;
 
     @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
     public User findOne(@PathVariable("id") long id) throws AccesDeniedUser {
 
         if (id > 0 && id < 3) {
@@ -37,23 +36,15 @@ public class UserController {
 
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.CONFLICT)//409
-    @ExceptionHandler({UserNotFoundException.class})
-    /*
-     * if the method generates the UserNotFoundException exception the user will receive the
-     * HttpStatus.CONFLICT as status
-     */
     public void delete(@PathVariable("id") Long id) throws UserNotFoundException {
 
         if (id > 0 && id < 3) {
-            //TODO : the response in this case is 500 and not 409 ?
             throw new UserNotFoundException("not found user");
         }
-        //TODO : if there is no exception the response status is 409 and not 200 ?
         service.deleteUser(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET)//old school :p
+    @RequestMapping(method = RequestMethod.GET)//old school
     public List<User> findAll() {
 
         return service.findAll();
