@@ -20,7 +20,7 @@ class HelloController {
      */
 
     @RequestMapping(path = {"", "/"}, method = RequestMethod.GET)
-//use @GetMapping instead of this annotation (same for other annotations)
+    //use @GetMapping instead of this annotation (same for other annotations)
     @ResponseBody
     public String sayHello() {//@ResponseBody not necessary to use with spring 4
 
@@ -39,7 +39,6 @@ class HelloController {
     @ResponseBody
     public String sayHelloUserByName(@PathVariable("name") String name) {
 
-        //TODO : http://localhost:8080/rest-war-xml-config/hello/ will be catching by this method and not the first ?
         return String.format("Hello %s !!!", name);
     }
     /*

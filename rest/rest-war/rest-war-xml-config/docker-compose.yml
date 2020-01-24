@@ -1,0 +1,7 @@
+version: "3"
+services:
+  web-app:
+    container_name: rest-app-xml
+    build: .
+    ports:
+      - "8080:8080"
