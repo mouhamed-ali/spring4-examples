@@ -1,17 +1,12 @@
 package org.spring.tutorial.examples.security;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import java.util.Arrays;
 
 
 @Configuration
@@ -54,20 +49,12 @@ public class SecurityConfigBasic extends WebSecurityConfigurerAdapter {
          */
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
+    @Autowired
+    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception{
 
-        User firstUser = new User("user", "password", Arrays.asList(new SimpleGrantedAuthority("USER")));
-        User secondUser = new User("admin", "admin", Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager(Arrays.asList(firstUser, secondUser));
-        return manager;
-        /*
-         * UserDetailsService is a DAO interface for loading data that is specific to a user account. It has no other
-         * function other to load that data for use by other components within the framework. It is not responsible for
-         * authenticating the user. Authenticating a user with a username/password combination is most commonly performed by
-         * the DaoAuthenticationProvider, which is injected with a UserDetailsService to allow it to load the password
-         * (and other data) for a user in order to compare it with the submitted value. Note that if you are using LDAP,
-         *  this approach may not work.
-         */
+        auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+        auth.inMemoryAuthentication().withUser("admin").password("password").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("super-admin").password("password").roles("ADMIN","SUPER_ADMIN");
+
     }
 }
