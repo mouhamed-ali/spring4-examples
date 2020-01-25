@@ -60,23 +60,13 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+        </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <!-- import the pom parent dependency management section -->
-                <groupId>org.spring.tutorial</groupId>
-                <artifactId>spring4-examples</artifactId>
-                <version>${project.parent.version}</version>
-                <scope>import</scope>
-                <!--
-                    This scope is only used when dependency is of type pom. This scope indicates that the specified POM
-                     should be replaced with the dependencies in that POM's <dependencyManagement> section.
-                -->
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+
 
     <build>
         <pluginManagement>

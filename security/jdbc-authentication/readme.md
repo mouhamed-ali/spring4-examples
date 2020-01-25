@@ -79,4 +79,25 @@ Use one of the users form the list above.
 
 ### Running the tests
 
-No unit tests provided with this example.
+Just execute this command to run unit tests :
+
+```shell script
+$ mvn test
+```
+
+```log
+Results :
+
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.384 s
+[INFO] Finished at: 2020-01-25T19:33:03+01:00
+[INFO] ------------------------------------------------------------------------
+```
+
+To know more about testing secured services, have a look at this article :
+
+- https://docs.spring.io/spring-security/site/docs/current/reference/html/test.html
