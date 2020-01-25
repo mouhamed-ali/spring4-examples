@@ -19,6 +19,9 @@ class UserController {
     @Autowired
     UserServiceImpl service;
 
+    /*
+     * endpoint : http://localhost:8080/rest-war-xml-config/users
+     */
     @RequestMapping(method = RequestMethod.GET)
     public List<User> findAll() {
 
@@ -29,12 +32,12 @@ class UserController {
     @ResponseStatus(HttpStatus.OK)// return 200
     public User findOne(@PathVariable("id") Long id) {
 
-        //TODO : http://localhost:8080/rest-war-xml-config/users will be catching by this method
         return service.findUserById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)//201
+    // if everything is ok the https answer status gonna be 201. If you comment the last line the status will be 200
     //the body of this answer is empty
     public void createCustomer(@RequestBody User user /* mapping the body of the request to a User java object */) {
 

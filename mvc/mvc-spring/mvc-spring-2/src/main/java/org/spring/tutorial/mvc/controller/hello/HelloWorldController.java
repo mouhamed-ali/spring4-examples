@@ -34,14 +34,13 @@ public class HelloWorldController {
     /*
      *  http://localhost:8080/mvc-spring-2/example/helloo?name="user_name"
      */
-    @RequestMapping("/helloo")
+    @RequestMapping("/welcome")
     public String sayHelloUser(@RequestParam("name") String userName, Model model) {
         /*
-         * we can also inject other request parameters like : HttpRequest, le HttpSession, RequestHeader, cookies
-         * , RequestBody ...
+         * we can also inject other request parameters like : HttpRequest, HttpSession, RequestHeader, cookies, RequestBody ...
          * it depends on your needs
          */
-        model.addAttribute("greeting", String.format("Hello %s !!!", userName));
+        model.addAttribute("greeting", String.format("Welcome %s !!!", userName));
         return "welcome";
     }
 

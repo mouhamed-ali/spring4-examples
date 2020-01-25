@@ -12,18 +12,24 @@
 <h2>You have the right to : </h2>
 <hr/>
 
-<security:authorize access="hasRole('ROLE_ADMIN')">
+<security:authorize access="hasRole('ADMIN')">
 	<ul>
-		<li>consult user's informations</li>
+		<li>consult users data</li>
 		<li>update users</li>
 		<li>delete users</li>
 	</ul>
 </security:authorize>
 
-<security:authorize access="hasRole('ROLE_USER')">
+<security:authorize access="hasRole('USER')">
 	<ul>
-		<li>consult your only informations</li>
-		<li>update your only informations</li>
+		<li>consult your only data</li>
+		<li>update your only data</li>
+	</ul>
+</security:authorize>
+
+<security:authorize access="hasRole('SUPER_ADMIN') and hasRole('ADMIN')">
+	<ul>
+		<li>add and delete users</li>
 	</ul>
 </security:authorize>
 

@@ -7,13 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
     /*
-     * http://localhost:8080/http-basic/index
-     *
-     * there is a problem when you logged out (http://localhost:8080/http-basic/login?logout) and then you logged
-     * in. the application is supposed to redirect you to the http://localhost:8080/http-basic/index but in our
-     * case it will redirect you to http://localhost:8080/http-basic/ TODO
+     * http://localhost:8080/http-basic/
      */
-    @GetMapping(value = {"/index", "/index/"})
+    @GetMapping(value = {"", "/"})
     public String index() {
         return "index";
     }

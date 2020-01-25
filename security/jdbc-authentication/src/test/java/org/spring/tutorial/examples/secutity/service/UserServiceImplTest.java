@@ -1,15 +1,15 @@
 package org.spring.tutorial.examples.secutity.service;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.security.RootConfig;
 import org.spring.tutorial.examples.security.domain.User;
 import org.spring.tutorial.examples.security.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RootConfig.class)
@@ -19,32 +19,28 @@ public class UserServiceImplTest {
     IUserService userService;
 
     @Test
-    public void testCreate() {
+    @DirtiesContext
+    public void testGlobal() {
 
-        //TODO add junit (or spring aspectj) asserts
-        System.out.println("--------------- test create ---------------");
-        userService.createUser(new User(99, "AAA", "AAA@AAA.com"));
+        //test of the insert-data.sql
+        Assert.assertEquals(userService.getAll().size(),3);
 
-        System.out.println("--------------- test find ---------------");
-        User user = userService.findUserById(99L);
-        System.out.println(user);
+        //test create entity
+        User user = new User(99, "gerard", "gerard@gmail.com");
+        userService.createUser(user);
+        Assert.assertEquals(userService.getAll().size(),4);
 
-        System.out.println("--------------- test update ---------------");
-        user.setEmail("BBB@BBB.com");
-        user.setName("BBB");
-        user = userService.updateUser(user);
+        //test find entity
+        Assert.assertEquals(userService.findUserById(99L),user);
 
-        System.out.println("--------------- test get All ---------------");
-        showUsers(userService.getAll());
+        //test update entity
+        user.setEmail("mike@gmail.com");
+        user.setName("mike");
+        Assert.assertEquals(userService.updateUser(user),new User(99L, "mike", "mike@gmail.com"));
 
-        System.out.println("--------------- test remove user by id ---------------");
+        //test remove entity
         userService.removeById(99L);
-
-        System.out.println("--------------- test get All ---------------");
-        showUsers(userService.getAll());
-    }
-
-    public void showUsers(List<User> list) {
-        list.forEach(System.out::println);
+        Assert.assertEquals(userService.getAll().size(),3);
+        Assert.assertNull(userService.findUserById(99L));
     }
 }

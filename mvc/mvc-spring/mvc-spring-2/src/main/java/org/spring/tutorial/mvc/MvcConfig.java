@@ -12,7 +12,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("org.spring.tutorial.mvc.controller.hello")
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
-    //first dispatcher servlet configuration
+    // first dispatcher servlet configuration
+    // it will serve only jsp pages
     @Bean
     public InternalResourceViewResolver jspViewResolver() {
         InternalResourceViewResolver bean = new InternalResourceViewResolver();

@@ -46,16 +46,14 @@ public class CustomerRestController {
     @PostMapping
     public ResponseEntity createCustomer(@RequestBody Customer customer) {
 
-        //TODO : the sent id is different from the id of the created customer ?
         customerDAO.create(customer);
-
         return new ResponseEntity(customer, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCustomer(@PathVariable Long id) {
 
-        if (null == customerDAO.delete(id)) {
+        if (!customerDAO.delete(id)) {
             return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
         }
 
@@ -66,9 +64,7 @@ public class CustomerRestController {
     @PutMapping("/{id}")
     public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
 
-        customer = customerDAO.update(id, customer);
-
-        if (null == customer) {
+        if (!customerDAO.update(id, customer)) {
             return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
         }
 

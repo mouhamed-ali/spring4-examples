@@ -5,15 +5,20 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
 public class CustomerDAO {
 
     // Dummy database. Initialize with some dummy values.
-    private static List<Customer> customers;
+    private List<Customer> customers;
 
-    {
+    public CustomerDAO(){
+        this.init();
+    }
+
+    public void init() {
         customers = new ArrayList<Customer>();
         customers.add(new Customer(101, "John", "Doe", "djohn@gmail.com", "121-232-3435"));
         customers.add(new Customer(201, "Russ", "Smith", "sruss@gmail.com", "343-545-2345"));
@@ -26,7 +31,7 @@ public class CustomerDAO {
      * @return list of customers
      */
     public List<Customer> list() {
-        return customers;
+        return new ArrayList<>(customers);
     }
 
     /**
@@ -38,26 +43,28 @@ public class CustomerDAO {
      */
     public Customer get(Long id) {
 
-        //TODO : change for to use stream java 8
-        for (Customer c : customers) {
-            if (c.getId().equals(id)) {
-                return c;
-            }
-        }
+        Optional<Customer> customer = customers.stream()
+                .filter(c -> Long.compare(c.getId(),id)==0)
+                .findFirst();
+        if(customer.isPresent())
+            return customer.get();
         return null;
     }
 
     /**
-     * Create new customer in dummy database. Updates the id and insert new
-     * customer in list.
+     * Create new customer in dummy database.
      *
      * @param customer Customer object
      * @return customer object with updated id
      */
     public Customer create(Customer customer) {
-        customer.setId(System.currentTimeMillis());
-        customers.add(customer);
-        return customer;
+
+        if(get(customer.getId())!=null){
+            update(customer.getId(),customer);
+        }else{
+            customers.add(customer);
+        }
+        return get(customer.getId());
     }
 
     /**
@@ -67,16 +74,9 @@ public class CustomerDAO {
      * @param id the customer id
      * @return id of deleted customer object
      */
-    public Long delete(Long id) {
+    public boolean delete(Long id) {
 
-        for (Customer c : customers) {
-            if (c.getId().equals(id)) {
-                customers.remove(c);
-                return id;
-            }
-        }
-
-        return null;
+        return customers.removeIf(c -> Long.compare(c.getId(),id)==0);
     }
 
     /**
@@ -87,18 +87,13 @@ public class CustomerDAO {
      * @param customer
      * @return customer object with id
      */
-    public Customer update(Long id, Customer customer) {
+    public boolean update(Long id, Customer customer) {
 
-        for (Customer c : customers) {
-            if (c.getId().equals(id)) {
-                // we will not update the id, consider it as a primary key
-                customer.setId(c.getId());
-                customers.remove(c);
-                customers.add(customer);
-                return this.get(id);
-            }
+        int index = customers.indexOf(get(id));
+        if(index > -1){
+            customers.set(index, customer);
+            return true;
         }
-
-        return null;
+        return false;
     }
 }

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login page</title>
 </head>
-<h1>Hello User !!!</h1>
+<h1>Hello '${pageContext.request.userPrincipal.name}' !!!</h1>
 
 <c:url value='/admin/show' var='adminUrl'/>
 <c:url value='/customer/show' var='customerUrl'/>

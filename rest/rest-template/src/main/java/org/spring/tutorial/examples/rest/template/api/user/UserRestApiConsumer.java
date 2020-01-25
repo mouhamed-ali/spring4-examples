@@ -13,7 +13,7 @@ import java.util.List;
 public class UserRestApiConsumer {
 
     // we gonna use the rest api of the project named rest-war-example-2
-    private static final String USER_URI = "http://localhost:8080/rest-war-example-2/users/";
+    public static final String USER_URI = "http://localhost:8080/rest-war-example-2/users/";
 
     @Autowired
     private RestTemplate restTemplate;

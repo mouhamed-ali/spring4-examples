@@ -1,110 +1,131 @@
 package org.spring.tutorial.examples.rest.template;
 
-import org.junit.Ignore;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.api.Assertions;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.spring.tutorial.examples.rest.template.api.user.UserRestApiConsumer;
 import org.spring.tutorial.examples.rest.template.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.client.ExpectedCount;
+import org.springframework.test.web.client.MockRestServiceServer;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+import java.util.Arrays;
 import java.util.List;
+
+import static org.spring.tutorial.examples.rest.template.api.user.UserRestApiConsumer.USER_URI;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RootConfig.class)
+@ActiveProfiles(profiles = "test")
 public class UserRestApiConsumerTest {
 
-    //TODO : change system out to asserts
+    private MockRestServiceServer mockServer;
+    private ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
-    private UserRestApiConsumer userRest;
+    private UserRestApiConsumer userRestConsumer;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @Before
+    public void init() {
+        mockServer = MockRestServiceServer.createServer(restTemplate);
+    }
 
     @Test
-    @Ignore // TODO use mocks or create a json collection of services
-    public void testUserApi() {
+    public void testGetUserById() throws Exception {
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI(USER_URI + "1")))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(
+                        withStatus(HttpStatus.OK)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(mapper.writeValueAsString(getUsersList().get(0)))
+                );
 
-        System.out.println("------------------------------------------------------ getUserById  --------------------------------------------------------------");
-        User user = userRest.getUserById(3L);
-        System.out.println(user);
+        User user = userRestConsumer.getUserById(1L);
+        mockServer.verify();
+        Assertions.assertThat(user).isEqualTo(getUsersList().get(0));
+    }
 
-        System.out.println("\n\n------------------------------------------------------ getAllUsers  --------------------------------------------------------------");
-        List<User> users = userRest.getAllUsers();
-        users.forEach(System.out::println);
+    @Test
+    public void testCreateUser() throws Exception {
+        User user = new User(88,"name","email");
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI(USER_URI)))
+                .andExpect(
+                        content().string(mapper.writeValueAsString(
+                                user
+                        ))
+                )
+                .andExpect(method(HttpMethod.POST))
+                .andRespond(
+                        withStatus(HttpStatus.CREATED)
+                        .contentType(MediaType.APPLICATION_JSON)
+                );
 
-        System.out.println("\n\n------------------------------------------------------ findAllUsers  --------------------------------------------------------------");
-        users = userRest.findAllUsers();
-        users.forEach(System.out::println);
+        HttpStatus status = userRestConsumer.createUser(user);
+        mockServer.verify();
+        Assertions.assertThat(status).isEqualTo(HttpStatus.CREATED);
+    }
 
-        System.out.println("\n\n------------------------------------------------------ getItInAnEasyWay  --------------------------------------------------------------");
-        users = userRest.getItInAnEasyWay();
-        users.forEach(System.out::println);
+    @Test
+    public void testUpdateUser() throws Exception {
+        User user = new User(99,"name","email");
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI(USER_URI + "99")))
+                .andExpect(
+                        content().string(mapper.writeValueAsString(
+                                user
+                        ))
+                )
+                .andExpect(method(HttpMethod.PUT))
+                .andRespond(
+                        withStatus(HttpStatus.NO_CONTENT)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
-        System.out.println("\n\n------------------------------------------------------ createUser  --------------------------------------------------------------");
-        User newUser = new User(99, "foulen", "foulen@foulen.com");
-        HttpStatus status = userRest.createUser(newUser);
-        if (status.equals(HttpStatus.CREATED)) {
-            System.out.println(newUser + " successfully created");
-        } else {
-            System.out.println("Error Code : " + status.value());
-        }
+        HttpStatus status = userRestConsumer.updateUser(99L,user);
+        mockServer.verify();
+        Assertions.assertThat(status).isEqualTo(HttpStatus.NO_CONTENT);
+    }
 
-        System.out.println("\n\n------------------------------------------------------ createUserSecond  --------------------------------------------------------------");
-        newUser = new User(88, "maxime", "maxime@maxime.com");
-        userRest.createUserSecond(newUser);
+    @Test
+    public void testDeleteUser() throws Exception {
+        mockServer.expect(ExpectedCount.once(),
+                requestTo(new URI(USER_URI + "527")))
+                .andExpect(method(HttpMethod.DELETE))
+                .andRespond(
+                        withStatus(HttpStatus.NO_CONTENT)
+                                .contentType(MediaType.APPLICATION_JSON)
+                );
 
-        System.out.println("\n\n------------------------------------------------------ findAllUsers  --------------------------------------------------------------");
-        users = userRest.findAllUsers();
-        users.forEach(System.out::println);
+        HttpStatus status = userRestConsumer.deleteUser(527L);
+        mockServer.verify();
+        Assertions.assertThat(status).isEqualTo(HttpStatus.NO_CONTENT);
+    }
 
-        System.out.println("\n\n------------------------------------------------------ updateUser  --------------------------------------------------------------");
-        newUser = new User(99, "chridigon1", "chridigon1@chridigon.com");
-        status = userRest.updateUser(99L, newUser);
-        if (status.equals(HttpStatus.NO_CONTENT)) {
-            System.out.println(newUser + " successfully updated");
-        } else {
-            System.out.println("Error Code : " + status.value());
-        }
-
-        System.out.println("\n\n------------------------------------------------------ updateUserSecond  --------------------------------------------------------------");
-        newUser = new User(88, "KingKong", "KingKong@gmail.com");
-        userRest.updateUserSecond(88L, newUser);
-
-        System.out.println("\n\n------------------------------------------------------ findAllUsers  --------------------------------------------------------------");
-        users = userRest.findAllUsers();
-        users.forEach(System.out::println);
-
-        try {
-
-            System.out.println("\n\n------------------------------------------------------ deleteUser  --------------------------------------------------------------");
-            status = userRest.deleteUser(99L);
-            if (status.equals(HttpStatus.NO_CONTENT)) {
-                System.out.println(newUser + " successfully deleted");
-            } else {
-                System.out.println("Error Code : " + status.value());
-            }
-        } catch (Exception e) {
-
-            //TODO : the rest service returns 409 all the time even if the user was deleted, check the rest service
-            System.out.println("exception : " + e.toString());
-        }
-
-        try {
-
-            System.out.println("\n\n------------------------------------------------------ deleteUserSecond  --------------------------------------------------------------");
-            userRest.deleteUserSecond(88L);
-        } catch (Exception e) {
-
-            //TODO : the rest service returns 409 all the time even if the user was deleted, check the rest service
-            System.out.println("exception : " + e.toString());
-        }
-
-        System.out.println("\n\n------------------------------------------------------ findAllUsers  --------------------------------------------------------------");
-        users = userRest.findAllUsers();
-        for (User u : users) {
-            System.out.println(u);
-        }
+    public static List<User> getUsersList() {
+        return Arrays.asList(
+                new User(1, "Dummy", "dummy@dummy.com"),
+                new User(2, "Raul", "Raul@Raul.com"),
+                new User(3, "Leo", "Leo@Leo.com"),
+                new User(4, "jean", "jean@jean.com"),
+                new User(5, "francois", "francois@francois.com")
+        );
     }
 }
