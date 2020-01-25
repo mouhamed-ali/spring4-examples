@@ -4,22 +4,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Customer {
 
     @Id
     private long id;
     private String name;
-    private String email;
+    private String country;
 
-    public User() {
-        // TODO Auto-generated constructor stub
+    public Customer() {
     }
 
-    public User(long id, String name, String email) {
+    public Customer(long id, String name, String country) {
         super();
         this.id = id;
         this.name = name;
-        this.email = email;
+        this.country = country;
     }
 
     public long getId() {
@@ -38,24 +37,24 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCountry() {
+        return country;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override
     public String toString() {
-        return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
+        return "User [id=" + id + ", name=" + name + ", email=" + country + "]";
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((country == null) ? 0 : country.hashCode());
         result = prime * result + (int) (id ^ (id >>> 32));
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
@@ -69,11 +68,11 @@ public class User {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        User other = (User) obj;
-        if (email == null) {
-            if (other.email != null)
+        Customer other = (Customer) obj;
+        if (country == null) {
+            if (other.country != null)
                 return false;
-        } else if (!email.equals(other.email))
+        } else if (!country.equals(other.country))
             return false;
         if (id != other.id)
             return false;

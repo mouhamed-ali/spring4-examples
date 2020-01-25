@@ -1,13 +1,12 @@
 package org.spring.tutorial.examples.security.service;
 
-import org.spring.tutorial.examples.security.dao.IUserDao;
-import org.spring.tutorial.examples.security.domain.User;
+import org.spring.tutorial.examples.security.dao.ICustomerDao;
+import org.spring.tutorial.examples.security.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 @Service
@@ -18,38 +17,31 @@ import java.util.List;
  * but in this case we will use the spring annotations
  */
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class UserServiceImpl implements IUserService {
+public class CustomerServiceImpl implements ICustomerService {
 
     @Autowired
-    private IUserDao userDao;
-
-    @PostConstruct
-    private void init() {
-        createUser(new User(1, "Daniel", "Alves"));
-        createUser(new User(2, "Vladimir", "Botin"));
-        createUser(new User(3, "Ivanka", "Trump"));
-    }
+    private ICustomerDao userDao;
 
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
-    public User createUser(User user) {
+    public Customer createCustomer(Customer customer) {
 
-        return userDao.save(user);
+        return userDao.save(customer);
     }
 
     @Secured("ROLE_ADMIN")
-    public User updateUser(User user) {
+    public Customer updateCustomer(Customer customer) {
 
-        return userDao.save(user);
+        return userDao.save(customer);
     }
 
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
-    public User findUserById(Long id) {
+    public Customer findCustomerById(Long id) {
 
         return userDao.findOne(id);
     }
 
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
-    public List<User> getAll() {
+    public List<Customer> getAll() {
 
         return userDao.findAll();
     }

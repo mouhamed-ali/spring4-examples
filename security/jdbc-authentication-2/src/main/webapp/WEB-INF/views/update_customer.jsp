@@ -6,40 +6,36 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add User</title>
+<title>Update Customer</title>
 </head>
 <body>
 	<br />
 	<ul>
 		<li><a
 			style="padding: 0 4px; background-color: #333; color: #fff; font-weight: 400;"
-			href="<c:url value='/user/index'/>">Home</a></li>
+			href="<c:url value='/'/>">Home</a></li>
 	</ul>
 	<hr />
 	<br />
-	<h1>User Creation</h1>
+	<h1>Update Customers</h1>
 	<br />
 	<hr />
-	<br />
-	<br />
-	<spring:url value="/user/" var="userActionUrl" />
-	<form:form method="POST" modelAttribute="user" action="${userActionUrl}">
+	<spring:url value="/customer/${customer.id}" var="customerActionUrl" />
+	<form:form action="${customerActionUrl}" modelAttribute="customer" method="put">
 		<table border="1">
 			<tbody>
 				<tr>
-					<th>User Id :
-					</th>
-					<td><form:input type="number" path="id" /></td>
+					<th>Customer ID</th>
+					<td><form:input placeholder="${customer.id}" type="number" path="id"
+						disabled="disabled" /></td>
 				</tr>
 				<tr>
-					<th>User Name
-					</th>
-					<td><form:input type="text" path="name" /></td>
+					<th>Customer Name</th>
+					<td><form:input placeholder="${customer.name}" type="text" path="name" /></td>
 				</tr>
 				<tr>
-					<th>E-mail
-					</th>
-					<td><form:input type="text" path="email" /></td>
+					<th>Country</th>
+					<td><form:input placeholder="${customer.country}" type="text"	path="country" /></td>
 				</tr>
 				<tr>
 					<th></th>

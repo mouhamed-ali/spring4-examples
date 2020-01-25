@@ -11,3 +11,10 @@ CREATE TABLE user_roles (
   PRIMARY KEY (user_role_id),
   UNIQUE KEY uni_username_role (role,username),
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username));
+
+CREATE  TABLE customer (
+  id int(11) NOT NULL ,
+  name VARCHAR(245) NOT NULL ,
+  country VARCHAR(245) NOT NULL ,
+  PRIMARY KEY (id)
+);
