@@ -18,7 +18,7 @@ public class UserController {
     /*
      * http://localhost:8080/jdbc-authentication/user/index
      */
-    @RequestMapping("/user/index")
+    @RequestMapping("/")
     public String returnIndex() {
         return "index";
     }

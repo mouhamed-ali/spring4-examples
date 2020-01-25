@@ -12,7 +12,7 @@
 	<ul>
 		<li><a
 			style="padding: 0 4px; background-color: #333; color: #fff; font-weight: 400;"
-			href="<c:url value='/user/index'/>">Home</a></li>
+			href="<c:url value='/'/>">Home</a></li>
 	</ul>
 	<hr />
 	<br />

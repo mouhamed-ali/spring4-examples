@@ -20,7 +20,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"org.spring.tutorial.examples.security.dao"})
-@ComponentScan(basePackages = {"org.spring.tutorial.examples.security.dao", "org.spring.tutorial.examples.security.service"})
+@ComponentScan(basePackages = {"org.spring.tutorial.examples.security.service"})
 @EnableTransactionManagement
 public class RootConfig {
 

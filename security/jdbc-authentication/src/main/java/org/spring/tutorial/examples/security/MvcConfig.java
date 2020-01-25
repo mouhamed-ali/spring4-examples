@@ -3,11 +3,9 @@ package org.spring.tutorial.examples.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -24,16 +22,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/views/user/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
-    }
-
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("loginPage");
-        /*
-         * the same problem as http basic :
-         * when you logged out you can't log in. spring will redirect you to http://localhost:8080/jdbc-authentication/
-         */
-        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
     @Override

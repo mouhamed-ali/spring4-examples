@@ -16,9 +16,9 @@ public class UserServiceImpl implements IUserService {
 
     @PostConstruct
     private void init() {
-        createUser(new User(1, "Daniel", "Alves"));
-        createUser(new User(2, "Vladimir", "Botin"));
-        createUser(new User(3, "Ivanka", "Trump"));
+        createUser(new User(1, "Linus", "Torvalds"));
+        createUser(new User(2, "Rod", "Johnson"));
+        createUser(new User(3, "Alan", "Turing"));
     }
 
     public User createUser(User user) {
