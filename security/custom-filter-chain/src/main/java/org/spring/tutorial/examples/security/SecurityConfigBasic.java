@@ -61,7 +61,7 @@ public class SecurityConfigBasic extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
 
-        User firstUser = new User("user", "password", Arrays.asList(new SimpleGrantedAuthority("USER")));
+        User firstUser = new User("user", "user", Arrays.asList(new SimpleGrantedAuthority("USER")));
         User secondUser = new User("admin", "admin", Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager(Arrays.asList(firstUser, secondUser));
         return manager;
