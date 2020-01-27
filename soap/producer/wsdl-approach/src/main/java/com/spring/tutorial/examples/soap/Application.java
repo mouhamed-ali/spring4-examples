@@ -17,7 +17,7 @@ public class Application {
     /*
         execute mvn clean install under root/soap/producer/wsdl-approach to generate xsd classes
         To test tha app :
-            - use a test tool like soapui
+            - use a test tool like soap-ui
             - go to the resources test folder and execute this command line (using shell) :
                 $ curl --header "content-type: text/xml" -d @request.xml http://localhost:8080/ws (you can execute this command using git bash on windows)
      */

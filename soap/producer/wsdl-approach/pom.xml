@@ -46,25 +46,14 @@
                 </executions>
                 <configuration>
                     <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>
-                    <!-- The location of XSD files. -->
-                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-                    <!-- Where do you want your Java code to be generated to? -->
+                    <!-- The location of XSD files.
+                    <outputDirectory>${project.basedir}/target/classes</outputDirectory>
+                     Where do you want your Java code to be generated to?
+                    -->
                     <clearOutputDir>false</clearOutputDir>
                     <!-- cleaned every time? We use false because we write our java source code in the same directory. -->
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>1.5.6.RELEASE</version><!-- bind this dependency to the parent -->
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 </project>
