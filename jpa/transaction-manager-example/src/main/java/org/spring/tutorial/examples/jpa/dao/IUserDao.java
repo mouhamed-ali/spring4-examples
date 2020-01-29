@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface IUserDao {
 
+
 	int createUser(User user);
 	int updateUser(User user);
 	User getUserById(long id);
@@ -22,4 +23,10 @@ public interface IUserDao {
 	 * there is 5 other types of propagation see spring documentation
 	 */
 	void deleteById(long id);
+
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	/*
+	 * the default value is Propagation.REQUIRED
+	 */
+	void deleteByIdNewTransaction(long id);
 }
