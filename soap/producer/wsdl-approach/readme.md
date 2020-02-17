@@ -11,7 +11,7 @@ In this example we will create a simple spring app to expose some data about som
 
 - https://www.baeldung.com/spring-boot-soap-web-service
 
-This example we will use the wsdl approach, which means that we have already a wsdl (a description file) of our service. 
+In this example we will use the wsdl approach, which means that we have already a wsdl (a description file) of our service. 
 We are using the jaxb plugin (check pom.xml) which gonna parse this wsdl and generate java classes.
 We gonna use these classes in our source code to manipulate the response of our service.
 
@@ -60,27 +60,4 @@ As a result, you should see the following response:
       </ns2:getCountryResponse>
    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
-```
-
-### Running the tests
-
-We gonna use MockMvc class to mock the controllers responses.
-
-You can simply run the unit tests using this command (in the current directory):
-
-```shell script
-$ mvn test
-```
-
-```log
-Results :
-
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.604 s
-[INFO] Finished at: 2020-01-20T15:28:40+01:00
-[INFO] ------------------------------------------------------------------------
 ```
