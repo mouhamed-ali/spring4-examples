@@ -1,6 +1,5 @@
 package org.spring.tutorial.examples.jpa;
 
-import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +10,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
 
 
 @Configuration
@@ -46,7 +47,7 @@ public class DefaultConfig {
 	public PlatformTransactionManager transactionManager(DataSource dataSource){
 		return new DataSourceTransactionManager(dataSource);
 		/*
-		 * PlatformTransactionManager is the interface used by spring to hide the complexity of implementions
+		 * PlatformTransactionManager is the interface used by spring to hide the complexity of implementations
 		 * and to add a high level of abstraction
 		 * the possible implementations are very numerous: for the local transactions we can use DataSourceTransactionManager,
 		 * HibernateTransactionManager, JpaTransactionManager ... and for global transactions we can use JtaTransactionManager ...

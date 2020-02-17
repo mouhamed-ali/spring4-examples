@@ -32,16 +32,16 @@ public class CustomFilter implements Filter {
         if (authentication != null) {
             Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
             if (roles != null) {
-                if (roles.contains("ROLE_ADMIN")) {
+                if (roles.contains("ADMIN")) {
                     request.getSession().setAttribute("messageAdmin", "hey admin, you are a little weirdo. you have to work harder.");
                 }
-                if (roles.contains("ROLE_USER")) {
+                if (roles.contains("USER")) {
                     request.getSession().setAttribute("messageUser", "hey user, you are awesome. you are our fortune.");
                 }
             }
         }
         if (request != null) {
-            request.setAttribute("passedByFilter", "this request passed by the custom filter (-_-) !!!");
+            request.setAttribute("passedByFilter", "this request has passed by our custom filter !!!");
         }
         chain.doFilter(req, response);
     }

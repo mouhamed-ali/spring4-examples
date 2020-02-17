@@ -9,3 +9,13 @@ VALUES (2, 'user', 'ROLE_USER');
 
 -- in this example we used the hash to secure passwords
 -- the SHA-256 (without salt) the password admin is admin, the password user is user
+
+-- populate the customer table
+INSERT INTO customer(id,name,country)
+VALUES (1,'Michelin', 'France');
+
+INSERT INTO customer(id,name,country)
+VALUES (2,'Decathlon', 'Belgium');
+
+INSERT INTO customer(id,name,country)
+VALUES (3,'Pepsi', 'USA');

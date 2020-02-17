@@ -1,5 +1,7 @@
 package org.spring.tutorial.examples.jpa.domain;
 
+import java.util.Objects;
+
 public class User {
 
 	private long id;
@@ -7,7 +9,6 @@ public class User {
 	private String email;
 	
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public User(long id, String name, String email) {
@@ -45,6 +46,19 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + "]";
 	}
-	
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		User user = (User) o;
+		return id == user.id &&
+				Objects.equals(name, user.name) &&
+				Objects.equals(email, user.email);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, email);
+	}
 }

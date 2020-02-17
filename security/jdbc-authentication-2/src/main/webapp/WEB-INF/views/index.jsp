@@ -17,10 +17,10 @@
 	<hr />
 	<br />
 	<ul>
-		<li><a class="btn-bootstrap" href="<c:url value='/user/add'/>">Add
-				User</a></li>
-		<li><a class="btn-bootstrap" href="<c:url value='/user/'/>">Show
-				Users</a></li>
+		<li><a class="btn-bootstrap" href="<c:url value='/customer/add'/>">Add
+				Customer</a></li>
+		<li><a class="btn-bootstrap" href="<c:url value='/customer/'/>">Show
+				Customers</a></li>
 	</ul>
 	<br />
 	<hr />
@@ -38,7 +38,7 @@
 		<a href="javascript:document.getElementById('logout').submit()">Logout</a>
 	</c:if>
 	<hr />
-	<spring:url value="/user/pwd" var="checkPasswordEncryption" />
+	<spring:url value="/pwd" var="checkPasswordEncryption" />
 	<form:form method="POST" action="${checkPasswordEncryption}">
 		<table>
 			<tr>

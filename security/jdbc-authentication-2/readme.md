@@ -1,14 +1,15 @@
-# Basic authentication using JDBC 
+# Basic authentication using JDBC - Second example
 
 In this project, we will secure a simple mvc crud application using spring.
 
 ## Overview
 
-In this example we gonna secure the crud web application developed in a previous example. You can find it here :
+In this example we gonna secure the crud web application using spring security.
 
-- https://github.com/amdouni-mohamed-ali/spring4-examples/tree/master/mvc/mvc-spring/mvc-spring-2
+We will secure the app with a basic authentication. Our users are stored in an H2 database and passwords are hashed this time (SHA-256 algorithm).
+Please note that this is not a production solution because this method is not secure. Check the docs :
 
-We will secure the app with a basic authentication but this time we will retrieve our app users from a database. The used database is H2 and you can find the scripts of creation of the schema and insertion of data in the resources.
+- https://github.com/spring-projects/spring-security/blob/master/crypto/src/main/java/org/springframework/security/crypto/password/StandardPasswordEncoder.java
 
 The list of users and roles is as below :
 
@@ -17,22 +18,24 @@ The list of users and roles is as below :
 | user | user | USER  |
 | admin  | admin | ADMIN  |
 
-I've changed the log level because i faced an entity manager error use it in you projects if you want to.
 
 Our security rules are described in `SecurityConfig.java` file. As we have two roles, we gonna let the USER role retrieve data (list of users)
 only and we gonna give all others permissions to the ADMIN role. This table will explain more :
 
 | ROLE  |  Get users | create user  | update user data | delete user  |
 |---|---|---|---|---|
-| USER  | Yes  | No  | No  | No  |
+| USER  | Yes  | Yes  | No  | No  |
 | ADMIN  | Yes  | Yes  |  Yes | Yes  |
 
-There is different ways to add security rules with spring. In this example we have secured the endpoints paths of our app directly. 
-This is an example of how to let only an admin to create new users :
+In this example we have secured the service layer and not endpoints. A user can't call a method unless he hes the right permission.
+This is an example of how to let only an admin to update a user :
 
-```log
-    http.antMatchers(HttpMethod.POST, "/user/**")
-                .hasRole("ADMIN")
+```java
+@Secured("ROLE_ADMIN")
+public Customer updateCustomer(Customer customer) {
+     
+    return userDao.save(customer);
+}
 ```
 
 ### Running the application
@@ -54,7 +57,7 @@ $ docker-compose up --build
 To get logs, you can use this :
 
 ```shell script
-$ docker logs jdbc-authentication
+$ docker logs jdbc-authentication-2
 ```
 
 To shutdown the app, click on ctrl+c or use this command :
@@ -65,23 +68,24 @@ $ docker-compose down
 
 After running the app, you can get access from this link :
 
-- http://localhost:8080/jdbc-authentication/
+- http://localhost:8080/jdbc-authentication-2/
 
-![login](https://user-images.githubusercontent.com/16627692/73124007-60ce5280-3f96-11ea-9c5c-5c71a36ec278.png)
+![login](https://user-images.githubusercontent.com/16627692/73126688-11981a00-3fb6-11ea-9caa-04444b8f98d9.png)
 
 Use one of the users form the list above.
 
 * User welcome page 
 
-![welcome](https://user-images.githubusercontent.com/16627692/73124008-6166e900-3f96-11ea-9f58-cccfbb4d3cef.png)
+![welcome](https://user-images.githubusercontent.com/16627692/73126690-1230b080-3fb6-11ea-9234-b46c6e6b862a.png)
 
-* Try to add a new user
+* Show users
 
-![add](https://user-images.githubusercontent.com/16627692/73124005-60ce5280-3f96-11ea-8c24-a22e36fb231b.png)
+![show](https://user-images.githubusercontent.com/16627692/73126689-11981a00-3fb6-11ea-8a78-2a83d0f3f1b3.png)
 
-* You will have this error
+* Try to delete the first user and you will have this error
 
-![error](https://user-images.githubusercontent.com/16627692/73124006-60ce5280-3f96-11ea-87fd-b4d73dedc61e.png)
+![delete](https://user-images.githubusercontent.com/16627692/73126687-11981a00-3fb6-11ea-8f1f-6b3bf0f1641b.png)
+
 
 ### Running the tests
 
@@ -94,13 +98,13 @@ $ mvn test
 ```log
 Results :
 
-Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  3.384 s
-[INFO] Finished at: 2020-01-25T19:33:03+01:00
+[INFO] Total time:  3.138 s
+[INFO] Finished at: 2020-01-25T21:41:26+01:00
 [INFO] ------------------------------------------------------------------------
 ```
 

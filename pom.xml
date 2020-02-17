@@ -17,6 +17,7 @@
         <module>jdbc</module>
         <module>caching</module>
         <module>soap</module>
+        <module>log</module>
     </modules>
     <packaging>pom</packaging>
 

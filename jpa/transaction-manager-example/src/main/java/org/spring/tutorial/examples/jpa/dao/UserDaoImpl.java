@@ -2,6 +2,7 @@ package org.spring.tutorial.examples.jpa.dao;
 
 import org.spring.tutorial.examples.jpa.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -16,8 +17,16 @@ public class UserDaoImpl implements IUserDao {
 	
 	public User getUserById(long id){
 		String sql = "SELECT * FROM users WHERE ID = ?";
-		return (User) jdbcTemplate.queryForObject(
-				sql, new Object[] { id }, new BeanPropertyRowMapper(User.class));
+		try {
+
+			return (User) jdbcTemplate.queryForObject(
+					sql, new Object[] { id }, new BeanPropertyRowMapper(User.class));
+		}catch (EmptyResultDataAccessException ex){
+
+			System.out.println("Cannot find the user : " + ex.toString());
+			return null;
+		}
+
 	}
 	
 	public List<User> findAll(){
@@ -28,6 +37,12 @@ public class UserDaoImpl implements IUserDao {
 	
 	public void deleteById(long id) {
 		
+		String deleteStatement = "DELETE FROM users WHERE id=?";
+		jdbcTemplate.update(deleteStatement, id);
+	}
+
+	@Override
+	public void deleteByIdNewTransaction(long id) {
 		String deleteStatement = "DELETE FROM users WHERE id=?";
 		jdbcTemplate.update(deleteStatement, id);
 	}

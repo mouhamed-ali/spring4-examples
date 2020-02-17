@@ -25,12 +25,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     /*
-     * http://localhost:8080/custom-filter-chain/index
-     * TODO : when you logged out you will be redirected to http://localhost:8080/custom-filter-chain/login?logout and from this url you can't log in again
+     * http://localhost:8080/custom-filter-chain/
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/index").setViewName("index");
+        registry.addViewController("/").setViewName("index");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 

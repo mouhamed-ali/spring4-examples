@@ -17,18 +17,20 @@ public interface IUserService {
 	@Transactional
 	/*
 	 * to make the createUser transactional
+	 * this method will be rolled back only if a runtime exception (unchecked exception) is thrown
+	 * spring will not rolled back the transaction is a checked exception is thrown
 	 */
-	int createUser(User user);
+	int createUser(User user, boolean generateException, boolean generateRuntimeException) throws Exception;
 	
 	@Transactional(
 			rollbackFor={MyDataBaseException.class}
 			,noRollbackFor={MyAppException.class}
 	)
 	/*
-	 * the rollback will be executed if an excetpion of type MyDataBaseException is generated
-	 * and it will not be executed if an excetpion of type MyDataBaseException is generated
+	 * the rollback will be executed if an exception of type MyDataBaseException is generated
+	 * and it will not be executed if an exception of type MyDataBaseException is generated
 	 */
-	int updateUser(User user, boolean generateDBExc, boolean generateMyAppExc, boolean generateException) throws MyDataBaseException,MyAppException,Exception;
+	int updateUser(User user, boolean generateDBExc, boolean generateMyAppExc, boolean generateException) throws Exception;
 	
 	@Transactional(readOnly=true,isolation=Isolation.REPEATABLE_READ)
 	/*
@@ -58,8 +60,8 @@ public interface IUserService {
 	/*
 	 * we can specify the name of the transaction manager we want to use
 	 */
-	void removeById(long id);
+	void removeById(long id, boolean generateRuntimeException);
 
-	@Transactional
-	void manipulateHim(User user, boolean generateException, boolean removeAfterCreation);
+	@Transactional("transactionManager")
+	void removeByIdNewTransaction(long id, boolean generateRuntimeException);
 }
