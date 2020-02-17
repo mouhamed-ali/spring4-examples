@@ -48,7 +48,63 @@ And run this to make that the project compiles :
 
 If everything turns out alright, you should end up with this result :
 
-![Selection_190](https://user-images.githubusercontent.com/16627692/72629898-7ec20480-3951-11ea-8cd5-e1274dd00934.png)
+```maven
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ log4j2-simple-example ---
+[INFO] Building jar: /home/salto/tutorials/java/spring4-examples/log/log4j2-simple-example/target/log4j2-simple-example-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for spring4-examples 1.0-SNAPSHOT:
+[INFO] 
+[INFO] spring4-examples ................................... SUCCESS [  0.408 s]
+[INFO] core ............................................... SUCCESS [  0.004 s]
+[INFO] HelloWorldJavaXmlConfig ............................ SUCCESS [  4.767 s]
+[INFO] properties-injection ............................... SUCCESS [  0.680 s]
+[INFO] annotations ........................................ SUCCESS [  0.360 s]
+[INFO] profiles ........................................... SUCCESS [  3.716 s]
+[INFO] properties-boot .................................... SUCCESS [  0.402 s]
+[INFO] junit .............................................. SUCCESS [  0.003 s]
+[INFO] junit-java-config .................................. SUCCESS [  1.603 s]
+[INFO] junit-xml-config ................................... SUCCESS [  1.576 s]
+[INFO] custom-test-config ................................. SUCCESS [  1.683 s]
+[INFO] test-sql-scripts ................................... SUCCESS [  2.559 s]
+[INFO] jpa ................................................ SUCCESS [  0.008 s]
+[INFO] entity-manager-config .............................. SUCCESS [  6.228 s]
+[INFO] transaction-manager-example ........................ SUCCESS [  4.192 s]
+[INFO] spring-data-jpa .................................... SUCCESS [  4.807 s]
+[INFO] rest ............................................... SUCCESS [  0.003 s]
+[INFO] rest-template ...................................... SUCCESS [  2.193 s]
+[INFO] rest-war ........................................... SUCCESS [  0.003 s]
+[INFO] rest-war-example ................................... SUCCESS [  6.434 s]
+[INFO] rest-war-xml-config ................................ SUCCESS [  0.473 s]
+[INFO] rest-war-example-2 ................................. SUCCESS [  1.555 s]
+[INFO] rest-boot .......................................... SUCCESS [ 10.234 s]
+[INFO] mvc ................................................ SUCCESS [  0.004 s]
+[INFO] mvc-boot ........................................... SUCCESS [  9.798 s]
+[INFO] mvc-spring ......................................... SUCCESS [  0.003 s]
+[INFO] mvc-spring-1 ....................................... SUCCESS [  6.889 s]
+[INFO] mvc-spring-2 ....................................... SUCCESS [  3.495 s]
+[INFO] security ........................................... SUCCESS [  0.001 s]
+[INFO] http-basic ......................................... SUCCESS [  0.752 s]
+[INFO] custom-login-page .................................. SUCCESS [  0.726 s]
+[INFO] jdbc-authentication ................................ SUCCESS [  7.754 s]
+[INFO] jdbc-authentication-2 .............................. SUCCESS [  4.830 s]
+[INFO] custom-filter-chain ................................ SUCCESS [  0.514 s]
+[INFO] jdbc ............................................... SUCCESS [  0.002 s]
+[INFO] jdbc-template-example-1 ............................ SUCCESS [  1.936 s]
+[INFO] caching ............................................ SUCCESS [  0.002 s]
+[INFO] example-1-boot-app ................................. SUCCESS [  3.035 s]
+[INFO] soap ............................................... SUCCESS [  0.002 s]
+[INFO] producer ........................................... SUCCESS [  0.002 s]
+[INFO] wsdl-approach ...................................... SUCCESS [  1.334 s]
+[INFO] consumer ........................................... SUCCESS [  0.002 s]
+[INFO] log ................................................ SUCCESS [  0.001 s]
+[INFO] log4j2-simple-example .............................. SUCCESS [  0.319 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:37 min
+[INFO] Finished at: 2020-02-17T18:30:47+01:00
+[INFO] ------------------------------------------------------------------------
+```
 
 `Please Note` : If you want to upgrade the version of one of the dependencies, make sure to check this link :
 
