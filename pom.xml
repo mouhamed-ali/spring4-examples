@@ -23,7 +23,7 @@
 
     <properties>
         <springframework.version>4.3.10.RELEASE</springframework.version>
-        <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>5.2.10.RELEASE</org.springframework.security.version>
         <!-- Spring and Spring Security are on different release schedules -->
         <spring.data.jpa.version>1.11.6.RELEASE</spring.data.jpa.version>
         <spring.data.jpa.commons.version>1.13.6.RELEASE</spring.data.jpa.commons.version>
