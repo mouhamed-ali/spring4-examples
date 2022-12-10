@@ -22,7 +22,7 @@
     <packaging>pom</packaging>
 
     <properties>
-        <springframework.version>4.3.10.RELEASE</springframework.version>
+        <springframework.version>6.0.0</springframework.version>
         <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
         <!-- Spring and Spring Security are on different release schedules -->
         <spring.data.jpa.version>1.11.6.RELEASE</spring.data.jpa.version>
